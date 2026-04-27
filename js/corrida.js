@@ -1,11 +1,17 @@
 const CORRIDA = {
     "markers": [],
+    "_pullingIntervalo": null,
+    "_pullingGPSIntervalo": null,
     "pendente": function () {
 
     },
+    "pararPulling": function () {
+        if (this._pullingIntervalo)    { clearInterval(this._pullingIntervalo);    this._pullingIntervalo    = null; }
+        if (this._pullingGPSIntervalo) { clearInterval(this._pullingGPSIntervalo); this._pullingGPSIntervalo = null; }
+    },
     "pulling": function () {
         var esse = this;
-        var intervalo = window.setInterval(function () {
+        esse._pullingIntervalo = window.setInterval(function () {
             var isActive = localStorage.getItem("corridapendente");
             var minhaPosicao = localStorage.getItem("minhaPosicao");
 
@@ -184,8 +190,8 @@ const CORRIDA = {
     },
     ////
     "pullingGPSmotorista": function () {
-        
-        setInterval(function () {
+        var esse = this;
+        esse._pullingGPSIntervalo = setInterval(function () {
             var corridaativa = (localStorage.getItem("corridaativa"));
             if (corridaativa == "sim") {
                 function clear(position) {

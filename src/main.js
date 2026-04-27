@@ -12,11 +12,11 @@ import '../lib/jquery.js';
 import './territorios.js';
 import './requests/Dados.js';
 import './requests/Cadastro.js';
-import './requests/Corrida.js';
+import './requests/CorridaApi.js';
 import './requests/Rentacar.js';
-import './requests/Guesthouse.js';
+import './requests/GuesthouseApi.js';
 import './requests/Conta.js';
-import './requests/Definicoes.js';
+import './requests/DefinicoesApi.js';
 
 // ---- Assets ----
 import '../lib/lightSlider.js';
@@ -56,8 +56,8 @@ import '../components/slideImg/slideImg.js';
 import '../components/pendente/pendente.js';
 import '../components/infoPendente/infopendente.js';
 import '../components/info/info.js';
-import '../components/cardRota/rota.js';
-import '../components/cardCorridas/corridas.js';
+import '../components/cardRota/cardRota.js';
+import '../components/cardCorridas/cardCorridas.js';
 import '../components/meusAlugueres/meusAlugueres.js';
 import '../components/meusArrendamentos/meusArrendamentos.js';
 import '../components/btnAtualizarPasse/btnAtualizarPasse.js';
@@ -93,6 +93,8 @@ root.prepend(loader);
 
 window.dados = criarDados(api, loader, notificacao);
 window._notificacao = notificacao;
+window.loader      = loader;      // exposto para router.js, menu.js e outros globais
+window.notificacao = notificacao; // exposto para corrida.js, menu.js e outros globais
 
 // Navegação inicial
 const token = localStorage.getItem("token");
@@ -103,53 +105,75 @@ if (token) {
     vaiTela(".");
 }
 
-let watch = 0;
-const controle = setInterval(function () {
-    if (!window.mapa) {
-        if (watch === 1) {
-            vaiTela(".");
-            location.reload();
-        }
-        notificacao.sms("Verifique a conexão de internet e se a localização está ativada", 1);
-        watch++;
-    }
-}, 10000);
-
-const intervalo = setInterval(function () {
-    if (window.mapa) {
-        componentPesquisar(".root", localizacao, window.mapa);
-        clearInterval(intervalo);
-        clearInterval(controle);
-        loader.fechar();
-        CORRIDA.pulling();
-
-        const corridaativa = localStorage.getItem("corridaativa");
-        if (corridaativa === "sim") {
-            addPolylineToMap(window.mapa);
-            const corridaAtual = JSON.parse(localStorage.getItem("corridaatual"));
-            CORRIDA.pullingGPSmotorista();
-        }
-        const corridapendente = localStorage.getItem("corridapendente");
-        if (corridapendente === "sim") {
-            addPolylineToMap(window.mapa);
-        }
-    }
-}, 100);
-
-// ========================================================
-// ---- Google Maps callback ----
-// ========================================================
-
+// Geolocation global — só recolhe lat/lng, sem inicializar mapa
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
     }
 }
-
 function showPosition(position) {
     window.latitude = position.coords.latitude;
     window.longitude = position.coords.longitude;
 }
+getLocation();
+
+// ========================================================
+// ---- Inicialização exclusiva do #/taxi ----
+// ========================================================
+
+let _taxiControle  = null;
+let _taxiIntervalo = null;
+
+window.TAXI_init = function () {
+    // Garante que pulling parou de iteração anterior
+    CORRIDA.pararPulling();
+
+    // Reabre o loader — será fechado apenas quando o mapa estiver pronto
+    window.loader.abrir();
+
+    let watch = 0;
+    _taxiControle = setInterval(function () {
+        if (!window.mapa) {
+            if (watch === 1) {
+                window.loader.fechar();
+                vaiTela(".");
+                location.reload();
+            }
+            notificacao.sms("Verifique a conexão de internet e se a localização está ativada", 1);
+            watch++;
+        } else {
+            clearInterval(_taxiControle);
+        }
+    }, 10000);
+
+    _taxiIntervalo = setInterval(function () {
+        if (window.mapa) {
+            componentPesquisar(".root", localizacao, window.mapa);
+            clearInterval(_taxiIntervalo);
+            clearInterval(_taxiControle);
+            window.loader.fechar();
+            CORRIDA.pulling();
+
+            const corridaativa = localStorage.getItem("corridaativa");
+            if (corridaativa === "sim") {
+                addPolylineToMap(window.mapa);
+                CORRIDA.pullingGPSmotorista();
+            }
+            const corridapendente = localStorage.getItem("corridapendente");
+            if (corridapendente === "sim") {
+                addPolylineToMap(window.mapa);
+            }
+        }
+    }, 100);
+};
+
+window.TAXI_destroy = function () {
+    if (_taxiControle)  { clearInterval(_taxiControle);  _taxiControle  = null; }
+    if (_taxiIntervalo) { clearInterval(_taxiIntervalo); _taxiIntervalo = null; }
+    CORRIDA.pararPulling();
+    localStorage.setItem("controlaMotoristasProximos", 0);
+    try { CORRIDA.deletaMarcadorDoMapa(); } catch (e) {}
+};
 
 function formatN(num) {
     return num
@@ -178,6 +202,13 @@ function fazSom() {
 window.fazSom = fazSom;
 
 window.initMap = function () {
+    // O elemento #mapa-global só existe quando a rota #/taxi está activa.
+    // Se ainda não estiver no DOM, guarda o flag e aguarda que Taxi.js o injete.
+    if (!document.getElementById('mapa-global')) {
+        window._mapsReadyPending = true;
+        return;
+    }
+
     getLocation();
 
     const inicial = { lat: window.latitude, lng: window.longitude };
@@ -263,6 +294,11 @@ window.initMap = function () {
     window.mapa = map;
     window.calculaRota = calcRoute;
     localizacao(map);
+
+    // Após o mapa estar pronto, inicializa os recursos do taxi se já estiver nessa rota
+    if (window.location.hash === '#/taxi') {
+        window.TAXI_init();
+    }
 };
 
 // Se o Google Maps já chamou o stub antes deste módulo terminar de carregar,
@@ -270,5 +306,3 @@ window.initMap = function () {
 if (window._mapsReadyPending) {
     window.initMap();
 }
-
-getLocation();

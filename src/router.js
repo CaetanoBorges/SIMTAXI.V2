@@ -48,6 +48,7 @@ const routes = {
     "#/concluircadastro":         () => import('./paginas/ConcluirCadastro.js'),
 
     "#/home":                     () => import('./paginas/Home.js'),
+    "#/taxi":                     () => import('./paginas/Taxi.js'),
     "#/corridas":                 () => import('./paginas/Corridas.js'),
     "#/rotas":                    () => import('./paginas/Rotas.js'),
     "#/conta":                    () => import('./paginas/MinhaConta.js'),
@@ -80,7 +81,7 @@ const routes = {
 // ---- Sub-estados internos da home (painel de corrida) ----
 const _handleSubEstado = (hash) => {
     const corrida = window.corrida;
-    if (hash === "" || hash === "#/home") {
+    if (hash === "" || hash === "#/taxi") {
         corrida ? corrida.fecharChamarFn(corrida) : "";
         corrida ? corrida.abrirChamarUmFn(corrida) : "";
         if (document.querySelector("#to")) {
@@ -131,22 +132,19 @@ const handleLocation = async () => {
         return;
     }
 
-    // Lifecycle: destroy da página atual
+    // Lifecycle: destroy da página atual (inclui TAXI_destroy se vier do #/taxi)
+    if (_rotaAtual === '#/taxi') {
+        try { if (window.TAXI_destroy) window.TAXI_destroy(); } catch (e) {}
+        // Reseta o mapa para ser recriado na próxima vez que #/taxi for visitado
+        window.mapa = null;
+    }
+
     if (_paginaAtual && _paginaAtual.destroy) {
         try { _paginaAtual.destroy(); } catch (e) { console.warn("destroy:", e); }
     }
 
     document.querySelector("#main").innerHTML = "";
-    try { loader.abrir(); } catch (e) {}
-
-    // Mapa só aparece na home
-    if (hash !== '#/home') {
-        document.querySelector("#mapa-global").style.display = "none";
-        localStorage.setItem("controlaMotoristasProximos", 0);
-        try { CORRIDA.deletaMarcadorDoMapa(); } catch (e) {}
-    } else {
-        document.querySelector("#mapa-global").style.display = "block";
-    }
+    try { window.loader.abrir(); } catch (e) {}
 
     const loadPage = routes[hash] || routes[404];
 
@@ -171,8 +169,12 @@ const handleLocation = async () => {
         console.error("Erro ao carregar rota:", hash, e);
         document.querySelector("#main").innerHTML =
             '<p style="padding:2rem;text-align:center;color:#c0392b">Erro ao carregar a página. Verifique sua conexão.</p>';
+        try { window.loader.fechar(); } catch (e) {}
     } finally {
-        try { loader.fechar(); } catch (e) {}
+        // Para #/taxi o loader é gerido pelo TAXI_init (fecha quando o mapa estiver pronto)
+        if (hash !== '#/taxi') {
+            try { window.loader.fechar(); } catch (e) {}
+        }
     }
 };
 
