@@ -1,0 +1,348 @@
+/* ═══════════════════════════════════════════════════
+   SIMTAXI — Glass Design System
+   Responsive · Glassmorphism · Mobile-first
+   ═══════════════════════════════════════════════════ */
+
+/* ── CSS Variables ── */
+:root {
+  /* Glass surfaces */
+  --g-bg:          rgba(255, 255, 255, 0.70);
+  --g-bg-strong:   rgba(255, 255, 255, 0.88);
+  --g-bg-dark:     rgba(180, 0, 0, 0.12);
+  --g-border:      rgba(255, 255, 255, 0.95);
+  --g-border-lt:   rgba(255, 255, 255, 0.60);
+  --g-blur:        blur(24px);
+  --g-blur-sm:     blur(12px);
+  --g-shadow:      0 8px 32px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(180, 0, 0, 0.08);
+  --g-shadow-sm:   0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(180, 0, 0, 0.06);
+  --g-radius:      16px;
+  --g-radius-sm:   10px;
+  --g-radius-xs:   8px;
+
+  /* Palette — red & white primaries */
+  --c-primary:     #e63946;
+  --c-primary-dim: rgba(230, 57, 70, 0.28);
+  --c-white:       #ffffff;
+  --c-muted:       rgba(20, 20, 20, 0.75);
+  --c-dim:         rgba(0, 0, 0, 0.45);
+  --c-green:       #16a34a;
+  --c-green-dim:   rgba(22, 163, 74, 0.25);
+  --c-orange:      #d97706;
+  --c-orange-dim:  rgba(217, 119, 6, 0.25);
+  --c-red:         #e63946;
+  --c-blue:        #2563eb;
+}
+
+/* ── Body background ── */
+body {
+  background: #f5f5f5;
+  color: #111;
+  min-height: 100vh;
+  position: relative;
+}
+
+#main { position: relative; z-index: 1; }
+
+/* ── Glass card ── */
+.g-card {
+  background: var(--g-bg);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius);
+  box-shadow: var(--g-shadow), inset 0 1px 0 rgba(255,255,255,0.90);
+}
+
+/* ── Glass surface (lighter) ── */
+.g-surface {
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-sm);
+  box-shadow: var(--g-shadow-sm), inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+/* ── Glass header strip ── */
+.g-header-strip {
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border-bottom: 1px solid var(--g-border);
+  padding: 12px 16px;
+  text-align: center;
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  border-radius: var(--g-radius-sm) var(--g-radius-sm) 0 0;
+}
+
+/* ── Typography ── */
+.g-title {
+  color: #111;
+  font-size: clamp(18px, 5vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.g-subtitle {
+  color: var(--c-muted);
+  font-size: clamp(12px, 3vw, 14px);
+  text-align: center;
+}
+
+.g-label {
+  color: var(--c-muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* ── Buttons ── */
+.g-btn {
+  display: block;
+  width: 100%;
+  height: 46px;
+  border-radius: var(--g-radius-xs);
+  border: 1px solid var(--g-border);
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  color: var(--c-white);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  box-shadow: var(--g-shadow-sm);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+/* Primary = red */
+.g-btn-primary {
+  background: linear-gradient(135deg, #e63946dd, #b71c2cdd);
+  border-color: rgba(230, 57, 70, 0.50);
+}
+
+/* Keep semantic aliases */
+.g-btn-green {
+  background: linear-gradient(135deg, #16a34add, #14532ddd);
+  border-color: rgba(22, 163, 74, 0.45);
+}
+
+.g-btn-red {
+  background: linear-gradient(135deg, #e63946dd, #b71c2cdd);
+  border-color: rgba(230, 57, 70, 0.45);
+}
+
+.g-btn-blue {
+  background: linear-gradient(135deg, #2563ebdd, #1e3a8add);
+  border-color: rgba(37, 99, 235, 0.45);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .g-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+  }
+  .g-btn-primary:hover { background: rgba(230, 57, 70, 0.55); }
+  .g-btn-green:hover   { background: rgba(22, 163, 74, 0.55); }
+  .g-btn-red:hover     { background: rgba(230, 57, 70, 0.55); }
+  .g-btn-blue:hover    { background: rgba(37, 99, 235, 0.55); }
+}
+
+.g-btn:active { transform: scale(0.97); }
+
+/* ── Inputs ── */
+.g-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  background: var(--g-bg);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-xs);
+  color: #111;
+  font-size: 14px;
+  margin: 8px 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.g-input::placeholder { color: rgba(0,0,0,0.40); }
+
+.g-input:focus {
+  outline: none;
+  border-color: rgba(230, 57, 70, 0.55);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 0 0 3px rgba(230,57,70,0.10);
+}
+
+.g-input option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* ── Responsive grid ── */
+.g-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 360px) {
+  .g-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Row ── */
+.g-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.g-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Divider ── */
+.g-divider {
+  border: none;
+  border-top: 1px solid var(--g-border);
+  margin: 14px 0;
+}
+
+/* ── Badge ── */
+.g-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--g-bg-strong);
+  border: 1px solid var(--g-border);
+  color: #111;
+}
+
+/* ── Price row ── */
+.g-price { color: var(--c-muted);  font-size: 15px; margin: 4px 0; }
+.g-price-discount { color: var(--c-orange); font-size: 15px; margin: 4px 0; }
+.g-price-total { color: var(--c-green); font-size: 16px; font-weight: 700; margin: 4px 0 12px; }
+
+/* ── Section heading ── */
+.g-section-title {
+  width: 100%;
+  padding: 10px 16px;
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  border-radius: var(--g-radius-xs);
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin: 12px 0 6px;
+}
+
+/* ── Full-screen overlay pages (TaxiAcaminho, etc.) ── */
+.g-fullscreen-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.g-fullscreen-page img.g-check-icon {
+  width: clamp(80px, 30vw, 160px);
+  filter: drop-shadow(0 4px 20px rgba(47,217,19,0.45));
+}
+
+.g-fullscreen-page p {
+  color: #111;
+  font-size: clamp(14px, 4vw, 18px);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Chat messages ── */
+.g-msg-left {
+  border-radius: var(--g-radius-xs);
+  border: 1px solid rgba(47,217,19,0.25);
+  padding: 10px;
+  background: rgba(47,217,19,0.08);
+  margin: 4px 0;
+  text-align: left;
+}
+
+.g-msg-right {
+  border-radius: var(--g-radius-xs);
+  border: 1px solid rgba(245,166,35,0.25);
+  padding: 10px;
+  background: rgba(245,166,35,0.08);
+  margin: 4px 0;
+  text-align: right;
+}
+
+/* ── Collapsible (PrivacidadeTermos) ── */
+.g-collapsible {
+  width: 100%;
+  padding: 16px 18px;
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  border: 1px solid var(--g-border);
+  border-radius: var(--g-radius-xs);
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.g-collapsible:hover,
+.g-collapsible.active {
+  background: rgba(255,255,255,0.26);
+}
+
+.g-collapsible-content {
+  display: none;
+  padding: 14px 18px;
+  background: var(--g-bg);
+  backdrop-filter: var(--g-blur-sm);
+  -webkit-backdrop-filter: var(--g-blur-sm);
+  border: 1px solid var(--g-border-lt);
+  border-radius: 0 0 var(--g-radius-xs) var(--g-radius-xs);
+  color: var(--c-muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ── Smooth scroll ── */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ── Responsive: widen body padding on desktop ── */
+@media (min-width: 1024px) {
+  #main {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}

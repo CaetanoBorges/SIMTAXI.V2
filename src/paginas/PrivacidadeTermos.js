@@ -54,9 +54,26 @@ export default function PrivacidadeTermos() {
     <br><br>
 </div>
 <style>
-    .collapsible { background-color:#fff;color:#000;cursor:pointer;padding:18px;width:100%;border:none;text-align:left;outline:none;font-size:15px;margin-bottom:10px;text-transform:uppercase;font-weight:600; }
-    .active, .collapsible:hover { background-color:#ccc; }
-    .content { padding:0 18px;display:none;overflow:hidden;background-color:#f1f1f1;margin-bottom:10px; }
+    .collapsible {
+        background:rgba(255,255,255,0.10);
+        backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        border:1px solid rgba(255,255,255,0.18);border-bottom:none;
+        border-radius:8px 8px 0 0;
+        color:#111;cursor:pointer;padding:16px 18px;
+        width:100%;text-align:left;outline:none;
+        font-size:14px;margin-top:10px;text-transform:uppercase;font-weight:600;
+        transition:background 0.2s;
+    }
+    .active, .collapsible:hover { background:rgba(255,255,255,0.18); }
+    .content {
+        padding:0 18px;display:none;overflow:hidden;
+        background:rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.15);border-top:none;
+        border-radius:0 0 8px 8px;margin-bottom:4px;
+    }
+    .content p, .content li { color:rgba(0,0,0,0.70);font-size:13px;line-height:1.6; }
+    .content strong { color:#111; }
+    h3 { color:#111; }
 </style>`;
   }
 

@@ -8,7 +8,7 @@ export default function Carro() {
     <br><br>
 </div>
 <style>
-    .descricao { padding:10px; }
+    .descricao { padding:10px;color:rgba(0,0,0,0.70); }
 </style>`;
   }
 

@@ -3,7 +3,8 @@ export default function EsqueceuApasse() {
     return `
 <div class="principal">
     <div class="principal-corpo">
-        <br><br><br>
+        <br><br>
+        <img src="/inicio/logo.svg" class="esq-logo">
         <p class="header-title">INSIRA O SEU EMAIL<br>PARA RECEBER UM NÚMERO<br>DE VERIFICAÇÃO DE CONTA<br>POR EMAIL</p>
         <br><br>
         <input type="email" class="input-telas-inicio recuperar-telefone" id="telefone" placeholder="Email">
@@ -12,7 +13,8 @@ export default function EsqueceuApasse() {
     </div>
 </div>
 <style>
-    .btn-receber-numero { margin:40px auto 0 auto;border:1px solid #2FD913;background:#2FD913; }
+    .esq-logo { display: block; width: 120px; height: 120px; object-fit: contain; margin: 0 auto 12px; }
+    .btn-receber-numero { margin:24px auto 0; background:linear-gradient(135deg,#e63946dd,#b71c2cdd); border-color:rgba(230,57,70,0.5); }
 </style>`;
   }
   function init() {}

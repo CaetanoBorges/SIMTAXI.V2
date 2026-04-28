@@ -14,7 +14,7 @@ export default function VerificarCadastro() {
     </div>
 </div>
 <style>
-    .btn-criar-conta { margin:30px auto 0 auto;border:1px solid #d9d9d9;background:#FFFFFF; }
+    .btn-criar-conta { margin:20px auto 0; background:linear-gradient(135deg,#e63946dd,#b71c2cdd); border-color:rgba(230,57,70,0.5); }
 </style>`;
   }
   function init() {}

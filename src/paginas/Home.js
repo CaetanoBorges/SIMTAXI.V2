@@ -99,7 +99,7 @@ export default function Home() {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #fff;
+    color: #111;
     gap: 6px;
     user-select: none;
   }
@@ -112,21 +112,27 @@ export default function Home() {
     position: absolute;
     top: 50%;
     transform: translateY(calc(-50% - 14px));
-    background: rgba(255,255,255,.75);
-    border: none;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.30);
     border-radius: 50%;
-    width: 34px; height: 34px;
+    width: 36px; height: 36px;
     font-size: 22px;
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     z-index: 2;
     display: flex; align-items: center; justify-content: center;
     padding: 0;
+    color: #111;
+    transition: background 0.2s;
   }
   .sp-btn--prev { left:  6px; }
   .sp-btn--next { right: 6px; }
-  .sp-btn:hover { background: rgba(255,255,255,.95); }
+  @media (hover: hover) and (pointer: fine) {
+    .sp-btn:hover { background: rgba(255,255,255,0.32); }
+  }
 
   /* dots */
   .sp-dots {
@@ -138,11 +144,12 @@ export default function Home() {
   .sp-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #ccc;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.5);
     cursor: pointer;
     transition: background .25s, transform .25s;
   }
-  .sp-dot--ativo { background: #e05b00; transform: scale(1.35); }
+  .sp-dot--ativo { background: #f5a623; border-color: #f5a623; transform: scale(1.35); }
 
   /* ──── Slide secundário ──── */
   .ss-wrap {
@@ -184,7 +191,8 @@ export default function Home() {
   .ss-card__label {
     font-size: 9px;
     font-weight: 600;
-    color: #444;
+    color: rgba(0,0,0,0.65);
+    text-shadow: none;
     text-align: center;
     line-height: 1.25;
     max-width: 58px;
@@ -192,18 +200,24 @@ export default function Home() {
 
   /* setas secundário */
   .ss-btn {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
     border-radius: 50%;
-    width: 28px; height: 28px;
+    width: 30px; height: 30px;
     font-size: 18px;
     cursor: pointer;
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     padding: 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    color: #111;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
   }
-  .ss-btn:hover { background: #f5f5f5; }
+  @media (hover: hover) and (pointer: fine) {
+    .ss-btn:hover { background: rgba(255,255,255,0.28); }
+  }
   .ss-btn:disabled { opacity: .35; cursor: default; }
 </style>`;
   }

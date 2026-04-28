@@ -98,8 +98,15 @@ window.notificacao = notificacao; // exposto para corrida.js, menu.js e outros g
 
 // Navegação inicial
 const token = localStorage.getItem("token");
+const _hashAtual = window.location.hash;
+
 if (token) {
     window._DADOS.buscar();
+}
+
+if (_hashAtual && _hashAtual !== '#' && _hashAtual !== '#/') {
+    vaiTela(_hashAtual);
+} else if (token) {
     vaiTela("/home");
 } else {
     vaiTela(".");

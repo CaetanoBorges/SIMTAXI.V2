@@ -44,35 +44,56 @@
 </div>
 <style>
     .mensagens { width:96%;display:flex;flex-direction:column;height:28vh;overflow-anchor:none;overflow-y:scroll; }
-    .mensagens .quem { display:block;font-size:13px; }
-    .mensagens .quando { display:block;font-size:10px; }
-    .mensagens p { padding:10px 20px;margin:5px 0;max-width:100%; }
-    .mensagens .left .sms { display:block;background:#2FD91310;padding:10px;border-radius:5px; }
-    .mensagens .left { border-radius:5px;display:block;text-align:left;border:1px solid #2FD91325;padding:10px;background-color:#2FD91310; }
-    .mensagens .right .sms { display:block;background:#D97E1310;padding:10px;border-radius:5px; }
-    .mensagens .right { display:block;border-radius:5px;text-align:right;border:1px solid #D97E1325;padding:10px;background-color:#D97E1310; }
-    .chatdacorrida h3 { padding:1vh 0;background:rgba(217,217,217,.45);text-align:center; }
-    .actions { width:94%;display:flex;justify-content:space-between;position:fixed;bottom:0;left:0;padding:3%;background:#FF000001;filter:drop-shadow(0px 0px 7px rgba(0,0,0,.25)); }
-    .actions input { width:70%;background:#FFFFFF;border:1px solid rgba(0,0,0,.41);border-radius:15px;padding:0 5%; }
-    .actions img { width:33px;height:31px;background:#2FD913;border-radius:15px;cursor:pointer; }
+    .mensagens .quem { display:block;font-size:12px;color:rgba(0,0,0,0.50); }
+    .mensagens .quando { display:block;font-size:10px;color:rgba(0,0,0,0.40); }
+    .mensagens p { padding:8px 16px;margin:4px 0;max-width:100%; }
+    .mensagens .left .sms { display:block;background:rgba(47,217,19,0.10);padding:10px;border-radius:6px;color:#111; }
+    .mensagens .left { border-radius:8px;display:block;text-align:left;border:1px solid rgba(47,217,19,0.2);padding:8px;background:rgba(47,217,19,0.07); }
+    .mensagens .right .sms { display:block;background:rgba(245,166,35,0.10);padding:10px;border-radius:6px;color:#111; }
+    .mensagens .right { display:block;border-radius:8px;text-align:right;border:1px solid rgba(245,166,35,0.2);padding:8px;background:rgba(245,166,35,0.07); }
+    .chatdacorrida h3 {
+        padding:10px 0;background:rgba(255,255,255,0.10);
+        backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        border-bottom:1px solid rgba(255,255,255,0.15);
+        text-align:center;color:#111;letter-spacing:0.08em;font-size:13px;
+    }
+    .actions {
+        width:100%;display:flex;justify-content:space-between;
+        position:fixed;bottom:0;left:0;padding:10px 3%;box-sizing:border-box;
+        background:rgba(15,15,40,0.75);
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+        border-top:1px solid rgba(255,255,255,0.12);
+    }
+    .actions input {
+        width:78%;background:rgba(255,255,255,0.10);
+        border:1px solid rgba(255,255,255,0.22);border-radius:20px;
+        padding:0 14px;height:40px;color:#fff;font-size:14px;
+    }
+    .actions input::placeholder { color:rgba(255,255,255,0.45); }
+    .actions img { width:40px;height:40px;background:linear-gradient(135deg,#2FD913cc,#1aaa00cc);border-radius:20px;cursor:pointer;padding:8px;box-sizing:border-box; }
     .corrida { width:96%;padding:3%;height:84vh; }
-    .pdistancia { color:black !important; }
-    .ptempo { color:black !important; }
-    .btn-ver-motorista { width:114px;height:31px;background:#d9d9d9;border-radius:5px;display:block;margin:10px auto;border:1px solid #d9d9d9;cursor:pointer; }
-    .btn-chamar-cheguei { width:114px;height:31px;background:#2FD913;border-radius:5px;display:block;margin:10px auto;border:1px solid #2FD913;cursor:pointer; }
-    .btn-chamar-cancelar { width:114px;height:31px;background:#D97E13;border-radius:5px;display:block;margin:10px auto;border:1px solid #D97E13;cursor:pointer; }
-    .btn-chamar-panico { width:114px;height:31px;background:#FF0000;border-radius:5px;display:block;margin:10px auto;border:1px solid #FF0000;cursor:pointer; }
-    .detailsButtons { display:100%;display:flex;align-items:flex-start;justify-content:space-between; }
-    .detailsButtons p { font-size:13px;line-height:5px;color:rgba(0,0,0,.67); }
-    .cancelada { display:none;background:#ff000020;padding:1vh 9%;border-radius:5px; }
-    .titulo { font-weight:bold;color:black !important; }
-    .motivo { color:black !important; }
-    .chegamos { display:none;background:#2FD91320;padding:1vh 9%;border-radius:5px; }
-    .chegamos p { font-weight:bold;color:black !important;line-height:17px; }
+    .pdistancia { color:rgba(0,0,0,0.70) !important; font-size:13px; }
+    .ptempo { color:rgba(0,0,0,0.70) !important; font-size:13px; }
+    .btn-ver-motorista {
+        height:38px;background:rgba(255,255,255,0.15);
+        backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        border-radius:8px;display:block;margin:8px auto;
+        border:1px solid rgba(255,255,255,0.25);cursor:pointer;
+        color:#111;font-size:13px;padding:0 16px;
+    }
+    .detailsButtons { display:flex;align-items:flex-start;justify-content:space-between; }
+    .detailsButtons p { font-size:13px;line-height:1.4;color:rgba(0,0,0,0.65); }
+    .cancelada { display:none;background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.3);padding:10px 16px;border-radius:8px;margin:8px 0; }
+    .titulo { font-weight:bold;color:#111 !important; }
+    .motivo { color:rgba(0,0,0,0.65) !important; }
+    .chegamos { display:none;background:rgba(47,217,19,0.12);border:1px solid rgba(47,217,19,0.3);padding:10px 16px;border-radius:8px;margin:8px 0; }
+    .chegamos p { font-weight:bold;color:#111 !important;line-height:17px; }
     .depois-de-iniciar { display:none; }
-    .passageiro-info { padding:15px 0; }
-    .passageiro-info img { width:50px;border-radius:25px; }
-    .passageiro-info p { font-size:13px;line-height:15px;margin:0; }
+    .passageiro-info { padding:12px 0; }
+    .passageiro-info img { width:48px;border-radius:24px;border:2px solid rgba(255,255,255,0.25); }
+    .passageiro-info p { font-size:13px;line-height:15px;margin:0;color:rgba(0,0,0,0.70); }
+    .locations { display:flex;align-items:center;padding:10px 0;margin-bottom:6px; }
+    .locations div p { font-size:13px;margin:2px 0;color:rgba(0,0,0,0.70); }
 </style>`;
   }
 

@@ -46,7 +46,25 @@
     </div>
 </div>
 <style>
-    #openDeleteAccount { padding:12px 24px;background-color:#ff0000;color:white;border:none;border-radius:4px;font-weight:600;cursor:pointer;margin:20px; }
+    #openDeleteAccount {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, rgba(231,76,60,0.75), rgba(169,50,38,0.75));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(231,76,60,0.45);
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        margin-top: 16px;
+        box-shadow: 0 4px 16px rgba(231,76,60,0.3);
+        transition: transform 0.18s ease, background 0.18s ease;
+    }
+    #openDeleteAccount:hover { background: rgba(231,76,60,0.9); transform: translateY(-1px); }
 </style>`;
   }
 

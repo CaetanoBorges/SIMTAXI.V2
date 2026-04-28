@@ -13,8 +13,8 @@ export default function NovaPalavraPasse() {
     </div>
 </div>
 <style>
-    .btn-pw { margin:40px auto 0 auto;border:1px solid #2FD913;background:#2FD913; }
-    .crie-pw { text-align:center;font-size:12px; }
+    .btn-pw { margin:24px auto 0; background:linear-gradient(135deg,#e63946dd,#b71c2cdd); border-color:rgba(230,57,70,0.5); }
+    .crie-pw { text-align:center; font-size:13px; color:rgba(0,0,0,0.60); }
 </style>`;
   }
   function init() {}

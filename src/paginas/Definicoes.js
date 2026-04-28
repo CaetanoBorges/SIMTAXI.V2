@@ -22,7 +22,21 @@ export default function Definicoes() {
     </div>
 </div>
 <style>
-    .estilo { width:80%;height:fit-content;padding:10%;background:rgba(255,255,255,.57);box-shadow:0px 0px 5px 2px rgba(0,0,0,.25);border-radius:5px;margin:2vh 0; }
+    .estilo {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        background: rgba(255,255,255,0.10);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.22);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+        border-radius: 14px;
+        margin: 10px 0;
+        color: #111;
+    }
+    .estilo p { color: rgba(0,0,0,0.70); text-align: center; }
+    #nome { color: #111; text-align: center; font-size: 15px; margin-top: 8px; }
 </style>`;
   }
 

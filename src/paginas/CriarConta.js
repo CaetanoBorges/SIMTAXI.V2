@@ -3,7 +3,7 @@
     return `
 <div class="principal">
     <div class="principal-corpo">
-        <img src="/Map.svg" class="header-img">
+        <h1 class="criar-conta-titulo">Criar Conta</h1>
         <input type="text" class="input-telas-inicio" placeholder="Nome" id="nome" autocomplete="off">
         <input type="number" class="input-telas-inicio" placeholder="Telefone" id="telefone">
         <input type="email" class="input-telas-inicio" placeholder="Email" id="email" autocomplete="off">
@@ -46,18 +46,42 @@
     </div>
 </div>
 <style>
-    .tp { font-weight:bold;text-decoration:italic }
-    .label-tp { color:red; }
-    .btn-criar-conta { margin:30px auto 0 auto;border:1px solid #d9d9d9;background:#FFFFFF; }
-    .switch { position:relative;display:inline-block;width:60px;height:34px; }
-    .switch input { opacity:0;width:0;height:0; }
-    .slider { position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:red;-webkit-transition:.4s;transition:.4s; }
-    .slider:before { position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s; }
-    input:checked + .slider { background-color:#2196F3; }
-    input:focus + .slider { box-shadow:0 0 1px #2196F3; }
-    input:checked + .slider:before { -webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px); }
-    .slider.round { border-radius:34px; }
-    .slider.round:before { border-radius:50%; }
+    .tp { font-weight: 700; color: #7ec8ff; }
+    .criar-conta-titulo {
+        color: #111;
+        font-size: clamp(22px, 6vw, 30px);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-align: center;
+        margin: 16px 0 24px;
+    }
+    .label-tp { color: rgba(255,100,100,0.9); font-size: 12px; margin: 10px 0 6px; }
+    .btn-criar-conta {
+        margin: 20px auto 0;
+        background: linear-gradient(135deg, #4a90d9cc, #1a4fa0cc);
+        border-color: rgba(74,144,217,0.5);
+    }
+    .switch { position: relative; display: inline-block; width: 56px; height: 30px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+        position: absolute; cursor: pointer;
+        inset: 0;
+        background: rgba(231,76,60,0.7);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: .4s;
+    }
+    .slider:before {
+        position: absolute; content: "";
+        height: 22px; width: 22px;
+        left: 3px; bottom: 3px;
+        background: white;
+        transition: .4s;
+    }
+    input:checked + .slider { background: rgba(33,150,243,0.8); border-color: rgba(33,150,243,0.5); }
+    input:focus  + .slider { box-shadow: 0 0 0 3px rgba(33,150,243,0.3); }
+    input:checked + .slider:before { transform: translateX(26px); }
+    .slider.round { border-radius: 30px; }
+    .slider.round:before { border-radius: 50%; }
 </style>`;
   }
 

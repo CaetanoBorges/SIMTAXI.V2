@@ -39,24 +39,38 @@
 </div>
 <style>
     .detalhesveiculo { margin-top:13vh; }
-    .detalhes { width:100%;display:flex;justify-content:space-between; }
-    .detalhes .ficha-tecnica p { font-size:12px;line-height:15px; }
+    .detalhes { width:100%;display:flex;justify-content:space-between;gap:12px; }
+    .detalhes .ficha-tecnica p { font-size:12px;line-height:1.5;color:rgba(0,0,0,0.70); }
     .detalhes .imagens { width:50%; }
-    .detalhes .imagens img { width:100%; }
-    .detalhesveiculo h3 { padding:1vh 0;background:rgba(217,217,217,.45);text-align:center; }
-    .descricao { display:flex;justify-content:space-between;font-size:12px; }
-    .classificacao { display:flex;justify-content:space-between; }
-    .classificacao .reagir { display:flex;width:30%;justify-content:space-between; }
-    .classificacao .reagir img { width:42px;height:42px;cursor:pointer; }
-    .classificacao .reacoes { display:flex;width:32%;justify-content:space-between;font-size:12px;margin-left:0; }
-    .classificacao .reacoes p { margin:0; }
+    .detalhes .imagens img { width:100%;border-radius:8px; }
+    .detalhesveiculo h3 {
+        padding:12px 0;
+        background:rgba(255,255,255,0.10);
+        backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        border-top:1px solid rgba(255,255,255,0.15);
+        border-bottom:1px solid rgba(255,255,255,0.15);
+        text-align:center;color:#111;letter-spacing:0.08em;font-size:13px;
+    }
+    .descricao { display:flex;justify-content:space-between;font-size:12px;color:rgba(0,0,0,0.65);margin:8px 0; }
+    .classificacao { display:flex;justify-content:space-between;align-items:center; }
+    .classificacao .reagir { display:flex;width:30%;justify-content:space-between;gap:8px; }
+    .classificacao .reagir img { width:40px;height:40px;cursor:pointer;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+    .classificacao .reacoes { display:flex;width:34%;justify-content:space-between;align-items:center;font-size:12px; }
+    .classificacao .reacoes p { margin:0;color:rgba(0,0,0,0.65); }
     .classificacao .reacoes img { width:20px;height:20px; }
     .motorista { width:100%;height:84vh;padding:14vh 0 0 0; }
-    .card { width:90%;padding:5%;background:#ffffff90;box-shadow:0px 0px 5px 2px rgba(0,0,0,.25);border-radius:10px; }
-    .card .identificacao { width:100%;display:flex;flex-direction:row;align-content:center;align-items:center;justify-content:space-around; }
-    .card .identificacao img { width:70px;height:70px;border-radius:50%; }
-    .card .identificacao p { margin:2px 0;font-size:17px;line-height:19px; }
-    .genero { font-size:12px !important; }
+    .card {
+        width:90%;margin:0 auto;padding:16px 20px;
+        background:rgba(255,255,255,0.10);
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+        border:1px solid rgba(255,255,255,0.22);
+        box-shadow:0 8px 32px rgba(0,0,0,0.35);
+        border-radius:14px;
+    }
+    .card .identificacao { width:100%;display:flex;flex-direction:row;align-content:center;align-items:center;justify-content:space-around;gap:12px; }
+    .card .identificacao img { width:68px;height:68px;border-radius:50%;border:2px solid rgba(255,255,255,0.3); }
+    .card .identificacao p { margin:3px 0;font-size:16px;color:#111; }
+    .genero { font-size:12px !important;color:rgba(0,0,0,0.50) !important; }
 </style>`;
   }
 

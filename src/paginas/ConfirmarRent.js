@@ -25,11 +25,27 @@ export default function ConfirmarRent() {
     </div>
 </div>
 <style>
-    .confirmar-sms { background:rgba(217,217,217,.1);display:block;margin-top:20px; }
-    .confirmar-sms .header { width:100%;text-align:center;padding:15px 0;background:rgba(217,217,217,.45);border-radius:5px 5px 0 0;font-size:16pt; }
-    .confirmar-sms .descricao { text-align:center;padding:15px 0;font-size:12px;line-height:15px;color:#000;margin-top:15px; }
-    .confirmar-sms div { width:100%;border-radius:0 0 5px 5px;padding-bottom:15px; }
-    .confirmar-sms div input { display:block;margin:0 auto;width:80%;height:31px;background:#FFFFFF;border:1px solid rgba(0,0,0,.41);border-radius:5px;padding-left:10px; }
+    .confirmar-sms {
+        background:rgba(255,255,255,0.06);
+        backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        border:1px solid rgba(255,255,255,0.15);border-radius:10px;
+        display:block;margin-top:20px;overflow:hidden;
+    }
+    .confirmar-sms .header {
+        width:100%;text-align:center;padding:14px 0;
+        background:rgba(255,255,255,0.12);font-size:15px;
+        font-weight:600;color:#111;letter-spacing:0.06em;
+    }
+    .confirmar-sms .descricao { text-align:center;padding:12px 16px;font-size:12px;color:rgba(0,0,0,0.60);margin:0; }
+    .confirmar-sms div { width:100%;padding-bottom:16px; }
+    .confirmar-sms div input {
+        display:block;margin:0 auto;width:80%;height:42px;
+        background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);
+        border-radius:8px;padding-left:14px;color:#111;font-size:14px;box-sizing:border-box;
+    }
+    .confirmar-sms div input::placeholder { color:rgba(0,0,0,0.35); }
+    h3 { color:#111;text-align:center; }
+    p { color:rgba(0,0,0,0.70); }
 </style>`;
   }
 

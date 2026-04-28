@@ -12,7 +12,7 @@ export default function ConcluirCadastro() {
     </div>
 </div>
 <style>
-    .btn-concluir { margin:40px auto 0 auto;border:1px solid #2FD913;background:#2FD913; }
+    .btn-concluir { margin:24px auto 0; background:linear-gradient(135deg,#e63946dd,#b71c2cdd); border-color:rgba(230,57,70,0.5); }
 </style>`;
   }
   function init() {}

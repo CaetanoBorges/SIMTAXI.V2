@@ -29,9 +29,11 @@ export default function Arrendar() {
 </div>
 <style>
     .concluir { width:100%; }
-    .concluir .preco { font-size:16px;line-height:19px;color:rgba(0,0,0,.53);margin-top:10px; }
-    .concluir .desconto { font-size:16px;line-height:19px;color:#D97E13; }
-    .concluir .total { font-size:16px;line-height:19px;color:#2FD913;margin-bottom:10px; }
+    .concluir .preco { font-size:16px;line-height:1.5;color:rgba(0,0,0,0.55);margin-top:10px; }
+    .concluir .desconto { font-size:16px;line-height:1.5;color:#f5a623; }
+    .concluir .total { font-size:16px;line-height:1.5;color:#2FD913;margin-bottom:10px; }
+    h3 { color:#111; }
+    p { color:rgba(0,0,0,0.70); }
 </style>`;
   }
 
