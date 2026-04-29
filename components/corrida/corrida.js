@@ -11,7 +11,7 @@ debliwui_corrida.innerHTML = `
             bottom:0;
             background: none;
             /*box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);*/
-            border-radius:50px 50px 0 0;
+            border-radius: 4px 4px 0 0;
             z-index: 10101;
             width:400px;
             z-index: 999999999;
@@ -19,14 +19,18 @@ debliwui_corrida.innerHTML = `
 
         .btn-chamar-um{
             width: 75%;
-            height: 31px;
-            background: #ff0000;
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            height: 40px;
+            background: linear-gradient(135deg,rgba(230,57,70,0.88),rgba(183,28,44,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(230,57,70,0.50);
+            box-shadow: 0 4px 14px rgba(230,57,70,0.30);
+            border-radius: 6px;
             display:block;
             margin:0 auto;
-            border: 1px solid #ff0000;
             cursor:pointer;
+            color:#fff;
+            font-weight:700;
         }
         .inputs{
             width:100%;
@@ -37,12 +41,14 @@ debliwui_corrida.innerHTML = `
         }
         .inputs .inputde{
             width: 100%;
-            height: 31px;
-            background: rgba(217, 217, 217, 0.35);
-            border-radius: 5px 5px 0px 0px;
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(217,119,6,0.30);
+            border-radius: 4px 4px 0px 0px;
             text-align:center;
             color: #d97e13;
-            border: 1px solid rgba(217, 217, 217, 0.35);
         }
         .inputs .inputde:focus{
             outline: 1px solid #d97e13;
@@ -50,12 +56,14 @@ debliwui_corrida.innerHTML = `
 
         .inputs .inputpara{
             width: 100%;
-            height: 31px;
-            background: rgba(217, 217, 217, 0.35);
-            border-radius: 0px 0px 5px 5px;
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(110,200,95,0.30);
+            border-radius: 0px 0px 4px 4px;
             text-align:center;
             color: #6EC85F;
-            border: 1px solid rgba(217, 217, 217, 0.35);
         }
         .inputs .inputpara:focus{
             outline: 1px solid #6EC85F;
@@ -85,7 +93,7 @@ debliwui_corrida.innerHTML = `
         .switch{
             box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
             cursor:pointer;
-            border-radius:10px;
+            border-radius: 6px;
             margin-top:30px !important;
         }
 
@@ -114,21 +122,30 @@ debliwui_corrida.innerHTML = `
 
         .btn-chamar-taxi{
             width: 100%;
-            height: 31px;
-            background: #2FD913;
-            border-radius: 5px;
+            height: 44px;
+            background: linear-gradient(135deg,rgba(22,163,74,0.88),rgba(20,83,45,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(22,163,74,0.45);
+            box-shadow: 0 4px 14px rgba(22,163,74,0.30), inset 0 1px 0 rgba(255,255,255,0.20);
+            border-radius: 6px;
             display:block;
             margin:0 auto;
-            border: 1px solid #2FD913;
             cursor:pointer;
+            color:#fff;
+            font-weight:700;
         }
 
         .status-um{ display:none;}
         .selects{display:flex;width:100%;align-items:center;justify-content:space-between;}
         .selects select {width: 87px;
-            height: 31px;background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.41);
-            border-radius: 5px;text-align:center;}
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 4px;
+            text-align:center;}
                     .selects p{
             height: 15px;
             font-size: 12px;
@@ -151,10 +168,12 @@ debliwui_corrida.innerHTML = `
         }
         .cupom input{
             width: 98%;
-            height: 31px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.41);
-            border-radius: 5px;
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 4px;
             padding-left:2%;
         }
 
@@ -162,22 +181,30 @@ debliwui_corrida.innerHTML = `
         
         .btn-taxi-concluir{
             width: 80%;
-            height: 31px;
-            background: #2FD913;
-            border-radius: 5px;
+            height: 44px;
+            background: linear-gradient(135deg,rgba(22,163,74,0.88),rgba(20,83,45,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(22,163,74,0.45);
+            box-shadow: 0 4px 14px rgba(22,163,74,0.30);
+            border-radius: 6px;
             margin:15px 0 5px 10.5%;
-            border: 1px solid #2FD913;
             cursor:pointer;
+            color:#fff;
+            font-weight:700;
         }
         .btn-taxi-voltar{
             width: 80%;
-            height: 31px;
-            background: #ff000050;
-            border-radius: 5px;
+            height: 40px;
+            background: rgba(230,57,70,0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 6px;
             margin:15px 0 5px 10.5%;
-            border: 1px solid #ff0000;
+            border: 1px solid rgba(230,57,70,0.50);
             cursor:pointer;
-            
+            color: #b71c2c;
+            font-weight:700;
         }
         .concluir .preco{
             font-size: 16px;
@@ -199,7 +226,11 @@ debliwui_corrida.innerHTML = `
         .centro{width:80%;height:fit-content}
 
         .pagamentos{
-            background: rgba(217, 217, 217, 0.1);
+            background: rgba(255,255,255,0.50);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.80);
+            border-radius: 6px;
             display:none;
             margin-top:20px !important;
         }
@@ -207,8 +238,8 @@ debliwui_corrida.innerHTML = `
             width:100%;
             text-align:center;
             padding:15px 0;
-            background: rgba(217, 217, 217, 0.45);
-            border-radius: 5px 5px 0px 0px;
+            background: rgba(255,255,255,0.60);
+            border-radius: 4px 4px 0px 0px;
             font-size:16pt;
         }
         .pagamentos .descricao{
@@ -225,17 +256,21 @@ debliwui_corrida.innerHTML = `
             align-items:center;
             justify-content:space-evenly;
             text-align:center;
-            border-radius: 0px 0px 5px 5px;
+            border-radius: 0px 0px 4px 4px;
         }
         .pagamentos div img{
             width:22%;
             cursor:pointer;
             filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-            border-radius: 10px;
+            border-radius: 6px;
         }
 
         .confirmar-sms{
-            background: rgba(217, 217, 217, 0.1);
+            background: rgba(255,255,255,0.50);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.80);
+            border-radius: 6px;
             display:none;
             margin-top:20px !important;
         }
@@ -243,8 +278,8 @@ debliwui_corrida.innerHTML = `
             width:100%;
             text-align:center;
             padding:15px 0;
-            background: rgba(217, 217, 217, 0.45);
-            border-radius: 5px 5px 0px 0px;
+            background: rgba(255,255,255,0.60);
+            border-radius: 4px 4px 0px 0px;
             font-size:16pt;
         }
         .confirmar-sms .descricao{
@@ -257,38 +292,50 @@ debliwui_corrida.innerHTML = `
         }
         .confirmar-sms div{
             width:100%;
-            border-radius: 0px 0px 5px 5px;
+            border-radius: 0px 0px 4px 4px;
             padding-bottom:15px;
         }
         .confirmar-sms div input{
             display:block;
             margin: 0 auto;
             width: 80%;
-            height: 31px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.41);
-            border-radius: 5px;
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 4px;
             padding-left:10px;
         }
         .btn-confirmar-sms{
             width: 100%;
-            height: 31px;
-            background: #2FD913;
-            border-radius: 5px;
+            height: 44px;
+            background: linear-gradient(135deg,rgba(22,163,74,0.88),rgba(20,83,45,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(22,163,74,0.45);
+            box-shadow: 0 4px 14px rgba(22,163,74,0.30);
+            border-radius: 6px;
             margin:15px 0;
-            border: 1px solid #2FD913;
             cursor:pointer;
             display:none;
+            color:#fff;
+            font-weight:700;
         }
         .btn-concluir-sms{
             width: 100%;
-            height: 31px;
-            background: #2FD913;
-            border-radius: 5px;
+            height: 44px;
+            background: linear-gradient(135deg,rgba(22,163,74,0.88),rgba(20,83,45,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(22,163,74,0.45);
+            box-shadow: 0 4px 14px rgba(22,163,74,0.30);
+            border-radius: 6px;
             margin:15px 0;
-            border: 1px solid #2FD913;
             cursor:pointer;
             display:none;
+            color:#fff;
+            font-weight:700;
         }
 
         @media screen and (max-width:500px) {

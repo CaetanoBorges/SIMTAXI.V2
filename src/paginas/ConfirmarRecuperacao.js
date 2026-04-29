@@ -1,4 +1,4 @@
-export default function ConfirmarRecuperacao() {
+﻿export default function ConfirmarRecuperacao() {
   function html() {
     return `
 <div class="principal">

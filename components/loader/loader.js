@@ -7,7 +7,9 @@ debliwui_loader.innerHTML = `
             left: 0;
             top:0;
             height:100vh;
-            background: #ffffff60;
+            background: rgba(255,255,255,0.40);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 99999999999;
             display:none;
         }

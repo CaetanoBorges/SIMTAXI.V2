@@ -1,4 +1,4 @@
-export default function Inicio() {
+﻿export default function Inicio() {
   function html() {
     return `
 <div class="inicio-page">

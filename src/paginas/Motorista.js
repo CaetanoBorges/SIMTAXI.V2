@@ -42,7 +42,7 @@
     .detalhes { width:100%;display:flex;justify-content:space-between;gap:12px; }
     .detalhes .ficha-tecnica p { font-size:12px;line-height:1.5;color:rgba(0,0,0,0.70); }
     .detalhes .imagens { width:50%; }
-    .detalhes .imagens img { width:100%;border-radius:8px; }
+    .detalhes .imagens img { width:100%;border-radius: 4px; }
     .detalhesveiculo h3 {
         padding:12px 0;
         background:rgba(255,255,255,0.10);
@@ -65,7 +65,7 @@
         backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
         border:1px solid rgba(255,255,255,0.22);
         box-shadow:0 8px 32px rgba(0,0,0,0.35);
-        border-radius:14px;
+        border-radius: 4px;
     }
     .card .identificacao { width:100%;display:flex;flex-direction:row;align-content:center;align-items:center;justify-content:space-around;gap:12px; }
     .card .identificacao img { width:68px;height:68px;border-radius:50%;border:2px solid rgba(255,255,255,0.3); }

@@ -1,4 +1,4 @@
-export default function VerificarCadastro() {
+﻿export default function VerificarCadastro() {
   function html() {
     return `
 <div class="principal">

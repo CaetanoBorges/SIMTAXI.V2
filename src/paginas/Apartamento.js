@@ -1,4 +1,4 @@
-export default function Apartamento() {
+﻿export default function Apartamento() {
   function html() {
     return `
 <div class="principal">

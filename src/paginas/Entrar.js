@@ -31,7 +31,7 @@
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         border: 1px solid rgba(255,255,255,0.22);
-        border-radius: 16px;
+        border-radius: 4px;
         box-shadow: 0 16px 48px rgba(0,0,0,0.5);
         z-index: 9999;
         position: fixed;

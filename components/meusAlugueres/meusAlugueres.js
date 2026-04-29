@@ -1,4 +1,4 @@
-const debliwui_meusalugueres = document.createElement('template');
+﻿const debliwui_meusalugueres = document.createElement('template');
 debliwui_meusalugueres.innerHTML = `
     <style>
         .container{
@@ -7,34 +7,41 @@ debliwui_meusalugueres.innerHTML = `
         }
         .btn{
             margin: 30px auto 0 auto;
-            border: 1px solid #d9d9d9;
-            background: none;
+            border: 1px solid rgba(255,255,255,0.90);
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             cursor: pointer;
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.95);
+            border-radius: 6px;
             font-size: 12pt;
             line-height: 14pt;
             width: 100%;
-            height: 31px;
+            height: 44px;
             z-index:999999;
             display:block;
             font-weight:bold;
+            color:#333;
+            transition: transform 0.18s ease;
         }
+        .btn:active { transform: scale(0.97); }
        
        .card-aluguer{padding:10px;margin-bottom:10px}
 
-        .backdrop{position:fixed;top:0;left:0;width:100%;height:100vh;background:#00000090;display:none;z-index: 1000;}
+        .backdrop{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;z-index: 1000;}
         .content{
             display:none;
             position: fixed;
             top: 10vh;
             height: 80vh;
-            /* display: block; */
             width: 76%;
             padding: 2%;
-            /* margin: 15vh 0 0 20%; */
-            background: #ffffff;
-            border-radius: 5px;
+            background: rgba(255,255,255,0.90);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.95);
+            border-radius: 4px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.90);
             left: 10%;z-index: 1000;
             overflow-y:scroll;}
             .conteudo{}

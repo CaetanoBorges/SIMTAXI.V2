@@ -1,4 +1,4 @@
-export default function NovaPalavraPasse() {
+﻿export default function NovaPalavraPasse() {
   function html() {
     return `
 <div class="principal">

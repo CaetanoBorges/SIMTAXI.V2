@@ -5,10 +5,12 @@ debliwui_corridas.innerHTML = `
             width:95%;
             padding:2.5%;
             height:fit-content;
-            background: #fff;
-            background: rgba(255, 255, 255, 0.57);
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.90);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(180,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.90);
+            border-radius: 4px;
             margin:2vh 0 2vh 0;
         }
 
@@ -20,8 +22,10 @@ debliwui_corridas.innerHTML = `
             padding:2.5%;
             display: flex;
             align-items: center;
-            background:#000000;
-            border-radius: 5px;
+            background: rgba(20,20,20,0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 6px;
             color:white;
         } 
 

@@ -1,4 +1,4 @@
-const debliwui_btnatualizarpasse = document.createElement('template');
+﻿const debliwui_btnatualizarpasse = document.createElement('template');
 debliwui_btnatualizarpasse.innerHTML = `
     <style>
         .container{
@@ -7,71 +7,87 @@ debliwui_btnatualizarpasse.innerHTML = `
         }
         .btn{
             margin: 0 auto;
-            border: 1px solid #d9d9d9;
-            background: #FFFFFF;
+            border: 1px solid rgba(255,255,255,0.90);
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             cursor: pointer;
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.95);
+            border-radius: 6px;
             font-size: 12pt;
             line-height: 14pt;
             width: 90%;
             display: block;
             padding:5%;
+            font-weight:700;
+            color:#333;
+            transition: transform 0.18s ease;
         }
+        .btn:active { transform: scale(0.97); }
 
         #atual, #nova{}
         .input-telas-inicio{
             width: 100%;
             padding: 0 10px;
-            height: 31px;
+            height: 38px;
             box-sizing: border-box;
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.41);
-            border-radius: 5px;
+            background: rgba(255,255,255,0.70);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 4px;
             margin: 10px 0;
         }
         
         
         .dois{
             display:block;
-            width: fit-content;
-            height: 31px;
-            background: #2FD913;
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
-            margin:5px auto;
-            border: 1px solid #2FD913;
+            background: linear-gradient(135deg,rgba(22,163,74,0.88),rgba(20,83,45,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 16px rgba(22,163,74,0.30), inset 0 1px 0 rgba(255,255,255,0.20);
+            border-radius: 6px;
+            margin:10px auto 5px auto;
+            border: 1px solid rgba(22,163,74,0.45);
             cursor:pointer;
+            color:#fff;
+            font-weight:700;
             font-size: 12pt;
             line-height: 14pt;
             width: 100%;
-            height: 31px;
+            height: 44px;
+            transition: transform 0.18s ease;
         }
+        .dois:active { transform: scale(0.97); }
         
 
-        .backdrop{position:fixed;top:0;left:0;width:100%;height:100vh;background:#00000090;display:none;z-index: 1000;}
+        .backdrop{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;z-index: 1000;}
         .content{
             display:none;
             position: fixed;
             top: 25vh;
-            /* display: block; */
             width: 60%;
             padding: 10%;
-            /* margin: 15vh 0 0 20%; */
-            background: #ffffff;
-            border-radius: 5px;
+            background: rgba(255,255,255,0.90);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.95);
+            border-radius: 4px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.90);
             left: 10%;z-index: 1000;}
             .content p{text-align:center;font-size:12pt;}
             .content textarea{display:block;margin:10px auto;
             width: 140px;
             height: 73px;
-            background: #F5F5F5;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 5px;
+            background: rgba(255,255,255,0.70);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 4px;
             padding:4px;}
             input:valid,
             textarea:valid {
-                background-color: palegreen;
+                background-color: rgba(167,243,208,0.70);
             }
     </style>
 

@@ -1,4 +1,4 @@
-export default function ConfirmarRent() {
+﻿export default function ConfirmarRent() {
   function html() {
     return `
 <div class="principal">
@@ -28,7 +28,7 @@ export default function ConfirmarRent() {
     .confirmar-sms {
         background:rgba(255,255,255,0.06);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border:1px solid rgba(255,255,255,0.15);border-radius:10px;
+        border:1px solid rgba(255,255,255,0.15);border-radius: 6px;
         display:block;margin-top:20px;overflow:hidden;
     }
     .confirmar-sms .header {
@@ -41,7 +41,7 @@ export default function ConfirmarRent() {
     .confirmar-sms div input {
         display:block;margin:0 auto;width:80%;height:42px;
         background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);
-        border-radius:8px;padding-left:14px;color:#111;font-size:14px;box-sizing:border-box;
+        border-radius: 4px;padding-left:14px;color:#111;font-size:14px;box-sizing:border-box;
     }
     .confirmar-sms div input::placeholder { color:rgba(0,0,0,0.35); }
     h3 { color:#111;text-align:center; }

@@ -1,13 +1,15 @@
-const debliwui_info = document.createElement('template');
+﻿const debliwui_info = document.createElement('template');
 debliwui_info.innerHTML = `
     <style>
         .container{
             width:100%;
             height:fit-content;
-            background: #fff;
-            background: rgba(255, 255, 255, 0.57);
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.90);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(180,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.90);
+            border-radius: 4px;
             margin:9vh 0 2vh 0;
         }
         .info {
@@ -23,7 +25,7 @@ debliwui_info.innerHTML = `
         width:40px;
         height:40px;
         padding: 5px;
-        border-radius: 25px;
+        border-radius: 4px;
         background: #ffffff;
         box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
         font-size: 20px;

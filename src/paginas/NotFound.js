@@ -1,4 +1,4 @@
-export default function NotFound() {
+﻿export default function NotFound() {
   function html() {
     return `
 <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;box-sizing:border-box;">

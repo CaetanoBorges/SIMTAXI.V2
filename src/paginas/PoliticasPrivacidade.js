@@ -1,4 +1,4 @@
-export default function PoliticasPrivacidade() {
+﻿export default function PoliticasPrivacidade() {
   function html() {
     return `
 <div class="principal"><br><br>

@@ -1,4 +1,4 @@
-export default function EsqueceuApasse() {
+﻿export default function EsqueceuApasse() {
   function html() {
     return `
 <div class="principal">

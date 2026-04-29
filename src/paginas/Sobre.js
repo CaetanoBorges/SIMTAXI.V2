@@ -1,4 +1,4 @@
-export default function Sobre() {
+﻿export default function Sobre() {
   function html() {
     return `
 <div class="principal">

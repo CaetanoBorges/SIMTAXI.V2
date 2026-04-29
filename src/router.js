@@ -48,6 +48,9 @@ const routes = {
     "#/concluircadastro":         () => import('./paginas/ConcluirCadastro.js'),
 
     "#/home":                     () => import('./paginas/Home.js'),
+    "#/mercado":                  () => import('./paginas/Mercado.js'),
+    "#/pedidos":                  () => import('./paginas/Pedidos.js'),
+    "#/mensagens":                () => import('./paginas/Mensagens.js'),
     "#/taxi":                     () => import('./paginas/Taxi.js'),
     "#/corridas":                 () => import('./paginas/Corridas.js'),
     "#/rotas":                    () => import('./paginas/Rotas.js'),

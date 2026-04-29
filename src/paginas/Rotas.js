@@ -1,4 +1,4 @@
-export default function Rotas() {
+﻿export default function Rotas() {
   function html() {
     return `
 <div class="principal">

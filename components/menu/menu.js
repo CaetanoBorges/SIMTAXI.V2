@@ -16,14 +16,18 @@ debliwui_menu.innerHTML = `
             top:0;
             width:300px;
             height:100vh;
-            background: #ffffff;
+            background: rgba(255,255,255,0.90);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-right: 1px solid rgba(255,255,255,0.95);
+            box-shadow: 4px 0 32px rgba(0,0,0,0.14), inset -1px 0 0 rgba(255,255,255,0.80);
             z-index: 10102;
         }
         .relativa{
             position: relative;
             overflow:auto;
             height:100vh;
-            background-color: #ffffff;
+            background: transparent;
         }
         .backdrop{
             width:100%;
@@ -33,7 +37,9 @@ debliwui_menu.innerHTML = `
             left: 0;
             top:0;
             height:100vh;
-            background: #00000074;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         
         ul {
@@ -122,11 +128,11 @@ debliwui_menu.innerHTML = `
             border: none;
             text-align: left;
             cursor: pointer;
-            background-color:white;
+            background: transparent;
             color:#7a7a7a;
             font-size:12pt;
             font-weight:bold;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
             position:relative;
         }
         
@@ -281,13 +287,13 @@ class debliwuimenu extends HTMLElement {
             corrida.shadowRoot.querySelector(".container").style.marginBottom = '-300px';
             subDiv.innerHTML = `
             <div class="sem-subscricao" style="width:80%;padding:10%;margin-left:3%;">
-                <span style="padding:5px;background:red;cursor:pointer;color:white;text-transform:uppercase;border-radius:5px;" id="fazer-pagamento" onclick=""><b>Recarga de acesso</b></span>
+                <span style="padding:5px;background:red;cursor:pointer;color:white;text-transform:uppercase;border-radius: 4px;" id="fazer-pagamento" onclick=""><b>Recarga de acesso</b></span>
                 <p style="font-size:11px;">Não tem recarga de acesso:<br><b>Serviço restrito</b></p>
             </div>
             <style>
                 #pagamento-container{position:fixed;top:0;width:100%;height:100vh;left:0;background:#00000099;}
                 #pagamento-backdrop{position:absolute;top:0;width:100%;height:100vh;left:0;z-index:1;}
-                #pagamento-dentro{position:relative;top:20vh;width:60%;height:fit-content;left:15%;padding:5%;background:#fff;border-radius:5px;z-index:2;}
+                #pagamento-dentro{position:relative;top:20vh;width:60%;height:fit-content;left:15%;padding:5%;background:#fff;border-radius: 4px;z-index:2;}
                 #pagamento-form{display:flex;flex-direction: column;}
                 #pagamento-form label{font-size:11px;margin-top:15px}
                 #pagamento-form input{width:95%;}
@@ -306,7 +312,7 @@ class debliwuimenu extends HTMLElement {
                           <label for="formGroupExampleInput2">Telefone do seu Multicaixa Express</label>
                           <input type="number" class="form-control" id="telefone" placeholder="Telefone para carregar via Express" value="999999" style="padding:5px;">
                         </div> <br>
-                        <span style="padding:5px;background:red;cursor:pointer;color:white;text-transform:uppercase;border-radius:5px;text-align:center" id="pagamento-pagar">CARREGAR ACESSO</span>
+                        <span style="padding:5px;background:red;cursor:pointer;color:white;text-transform:uppercase;border-radius: 4px;text-align:center" id="pagamento-pagar">CARREGAR ACESSO</span>
                     </form>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-const debliwui_notificacao = document.createElement('template');
+﻿const debliwui_notificacao = document.createElement('template');
 debliwui_notificacao.innerHTML = `
     <style>
         .container{
@@ -7,9 +7,13 @@ debliwui_notificacao.innerHTML = `
             left: 3%;
             top:1.5vh;
             height:fit-content;
-            background: #2FD913;
+            background: rgba(47,217,19,0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(47,217,19,0.50);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.20);
             z-index: 9999999999999 !important;
-            border-radius:5px;
+            border-radius: 6px;
             display:none
         }
         

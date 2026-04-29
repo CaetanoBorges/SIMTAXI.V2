@@ -1,4 +1,4 @@
-const debliwui_pesquisa_rentacar = document.createElement('template');
+﻿const debliwui_pesquisa_rentacar = document.createElement('template');
 debliwui_pesquisa_rentacar.innerHTML = `
     <style>
         .container{
@@ -16,10 +16,13 @@ debliwui_pesquisa_rentacar.innerHTML = `
         .pesquisar select{
             box-sizing: border-box;
             width: 100%;
-            height: 31px;
-            background: rgba(255, 255, 255, 0.57);
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            height: 38px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.90);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.95);
+            border-radius: 6px;
         }
 
         .pesquisar .aciona-pesquisa {

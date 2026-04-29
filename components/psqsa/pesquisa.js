@@ -30,10 +30,12 @@
         .pesquisar input{
             box-sizing: border-box;
             width: 90%;
-            height: 31px;
-            background: rgba(255, 255, 255);
-            border: 1px solid rgba(0, 0, 0, 0.6);
-            border-radius: 5px;
+            height: 34px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 4px;
             text-align:center;
             text-transform: uppercase;
             font-size:10px;
@@ -55,7 +57,7 @@
             right:-18px;
             cursor:pointer;
             box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
-            border-radius:15px;
+            border-radius: 6px;
             padding:1px;
         }
         .backgroun{
@@ -64,9 +66,12 @@
             left:0;
             width:100%;
             height:103px;
-            background: #FFFFFF90;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.90);
             z-index: 999999998;
-            box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
         }
         @media screen and (max-width:700px) {
             .conteudo{

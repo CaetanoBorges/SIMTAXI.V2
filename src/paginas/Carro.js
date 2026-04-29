@@ -1,4 +1,4 @@
-export default function Carro() {
+﻿export default function Carro() {
   function html() {
     return `
 <div class="principal">

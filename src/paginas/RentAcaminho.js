@@ -20,7 +20,7 @@
     .taxiacaminho > div a {
         flex:1;padding:12px 0;text-align:center;
         backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-        border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;
+        border-radius: 4px;font-weight:700;font-size:13px;text-decoration:none;
         transition:transform 0.18s;
     }
     .taxiacaminho > div a:active { transform:scale(0.97); }

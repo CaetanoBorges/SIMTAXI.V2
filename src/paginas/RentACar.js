@@ -16,14 +16,14 @@
                     <section class="selects">
                         <div>
                             <p>Carro ou moto?</p>
-                            <select class="btn-select">
+                            <select class="btn-select" id="rc-carromoto">
                                 <option>Carro</option>
                                 <option>Moto</option>
                             </select>
                         </div>
                         <div>
                             <p>Nº de pessoas</p>
-                            <select class="btn-select">
+                            <select class="btn-select" id="rc-npessoas">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -33,7 +33,7 @@
                     <section class="selects">
                         <div>
                             <p>Categoria</p>
-                            <select class="btn-select">
+                            <select class="btn-select" id="rc-categoria">
                                 <option>Normal</option>
                                 <option>VIP</option>
                                 <option>Executivo</option>
@@ -41,7 +41,7 @@
                         </div>
                         <div>
                             <p>Ida e volta?</p>
-                            <select class="btn-select">
+                            <select class="btn-select" id="rc-idavolta">
                                 <option>Não</option>
                                 <option>Sim</option>
                             </select>
@@ -69,26 +69,26 @@
     .inputs .inputde {
         width:100%;height:44px;background:rgba(217,100,19,0.18);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border-radius:8px 8px 0 0;text-align:center;color:#f5a623;
+        border-radius: 4px 4px 0 0;text-align:center;color:#f5a623;
         border:1px solid rgba(245,166,35,0.4);font-size:14px;
     }
     .inputs .inputpara {
         width:100%;height:44px;background:rgba(47,217,19,0.12);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border-radius:0 0 8px 8px;text-align:center;color:#6EC85F;
+        border-radius: 0 0 4px 4px;text-align:center;color:#6EC85F;
         border:1px solid rgba(110,200,95,0.4);font-size:14px;
     }
     .inputs .inputde::placeholder,.inputs .inputpara::placeholder { color:rgba(0,0,0,0.40); }
     .inputs div { position:relative;margin:5px 0; }
     .inputs .span { position:absolute;top:8px;left:8px;font-size:10px;color:rgba(0,0,0,0.50); }
-    .switch { box-shadow:0 4px 16px rgba(0,0,0,.3);cursor:pointer;border-radius:10px;margin-top:30px !important;opacity:.9; }
+    .switch { box-shadow:0 4px 16px rgba(0,0,0,.3);cursor:pointer;border-radius: 6px;margin-top:30px !important;opacity:.9; }
     .basic-info { width:100%;padding:2% 0;display:flex;font-size:13px;justify-content:space-between;margin:10px 0 15px 0;color:rgba(0,0,0,0.65); }
     .status-um { display:block; }
     .selects { display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px; }
     .selects select {
         flex:1;height:42px;background:rgba(255,255,255,0.10);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border:1px solid rgba(255,255,255,0.22);border-radius:8px;
+        border:1px solid rgba(255,255,255,0.22);border-radius: 4px;
         text-align:center;color:#111;font-size:13px;
     }
     .selects select option { background:#1a1a2e;color:#fff; }
@@ -99,7 +99,7 @@
     .cupom input {
         width:100%;height:42px;background:rgba(255,255,255,0.10);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border:1px solid rgba(255,255,255,0.22);border-radius:8px;
+        border:1px solid rgba(255,255,255,0.22);border-radius: 4px;
         padding-left:14px;color:#111;font-size:14px;box-sizing:border-box;
     }
     .cupom input::placeholder { color:rgba(0,0,0,0.35); }
@@ -107,7 +107,7 @@
     .btn-taxi-concluir {
         width:90%;height:46px;margin:14px auto 8px;display:block;
         background:linear-gradient(135deg,#e63946dd,#b71c2cdd);
-        border:1px solid rgba(230,57,70,0.5);border-radius:8px;cursor:pointer;
+        border:1px solid rgba(230,57,70,0.5);border-radius: 4px;cursor:pointer;
         color:#fff;font-weight:700;font-size:14px;letter-spacing:0.06em;
         box-shadow:0 4px 16px rgba(230,57,70,0.25);transition:transform 0.18s;
     }
@@ -123,8 +123,23 @@
 </style>`;
   }
 
-  function init() {}
-  function destroy() {}
+  let _ts = [];
+
+  function init() {
+    if (window.TomSelect) {
+      _ts = [
+        new TomSelect('#rc-carromoto', { create: false, dropdownParent: 'body' }),
+        new TomSelect('#rc-npessoas',  { create: false, dropdownParent: 'body' }),
+        new TomSelect('#rc-categoria', { create: false, dropdownParent: 'body' }),
+        new TomSelect('#rc-idavolta',  { create: false, dropdownParent: 'body' }),
+      ];
+    }
+  }
+
+  function destroy() {
+    _ts.forEach(t => t.destroy());
+    _ts = [];
+  }
 
   return { html: html(), init, destroy };
 }

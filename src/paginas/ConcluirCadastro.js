@@ -1,4 +1,4 @@
-export default function ConcluirCadastro() {
+﻿export default function ConcluirCadastro() {
   function html() {
     return `
 <div class="principal">

@@ -1,4 +1,4 @@
-export default function Corridas() {
+﻿export default function Corridas() {
   function html() {
     return `
 <div class="principal" id="corridas">

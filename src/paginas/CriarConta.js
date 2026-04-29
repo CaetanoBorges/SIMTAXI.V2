@@ -85,13 +85,31 @@
 </style>`;
   }
 
+  let _ts = [];
+
   function init() {
     if (window.CADASTRO && window.CADASTRO.setDados) {
       window.CADASTRO.setDados();
     }
+    if (window.TomSelect) {
+      const tsGen  = new TomSelect('#genero',   { create: false, dropdownParent: 'body' });
+      const tsProv = new TomSelect('#provincia', { create: false, dropdownParent: 'body' });
+      const tsMun  = new TomSelect('#municipio', { create: false, dropdownParent: 'body' });
+      _ts = [tsGen, tsProv, tsMun];
+
+      // After Cadastro.setDados() listener updates #municipio innerHTML on province change, sync TomSelect
+      document.getElementById('provincia').addEventListener('change', function () {
+        tsMun.clearOptions();
+        tsMun.sync();
+        document.getElementById('municipio').disabled ? tsMun.disable() : tsMun.enable();
+      });
+    }
   }
 
-  function destroy() {}
+  function destroy() {
+    _ts.forEach(t => t.destroy());
+    _ts = [];
+  }
 
   return { html: html(), init, destroy };
 }

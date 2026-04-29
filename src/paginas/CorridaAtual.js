@@ -48,9 +48,9 @@
     .mensagens .quando { display:block;font-size:10px;color:rgba(0,0,0,0.40); }
     .mensagens p { padding:8px 16px;margin:4px 0;max-width:100%; }
     .mensagens .left .sms { display:block;background:rgba(47,217,19,0.10);padding:10px;border-radius:6px;color:#111; }
-    .mensagens .left { border-radius:8px;display:block;text-align:left;border:1px solid rgba(47,217,19,0.2);padding:8px;background:rgba(47,217,19,0.07); }
+    .mensagens .left { border-radius: 4px;display:block;text-align:left;border:1px solid rgba(47,217,19,0.2);padding:8px;background:rgba(47,217,19,0.07); }
     .mensagens .right .sms { display:block;background:rgba(245,166,35,0.10);padding:10px;border-radius:6px;color:#111; }
-    .mensagens .right { display:block;border-radius:8px;text-align:right;border:1px solid rgba(245,166,35,0.2);padding:8px;background:rgba(245,166,35,0.07); }
+    .mensagens .right { display:block;border-radius: 4px;text-align:right;border:1px solid rgba(245,166,35,0.2);padding:8px;background:rgba(245,166,35,0.07); }
     .chatdacorrida h3 {
         padding:10px 0;background:rgba(255,255,255,0.10);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -77,20 +77,20 @@
     .btn-ver-motorista {
         height:38px;background:rgba(255,255,255,0.15);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-        border-radius:8px;display:block;margin:8px auto;
+        border-radius: 4px;display:block;margin:8px auto;
         border:1px solid rgba(255,255,255,0.25);cursor:pointer;
         color:#111;font-size:13px;padding:0 16px;
     }
     .detailsButtons { display:flex;align-items:flex-start;justify-content:space-between; }
     .detailsButtons p { font-size:13px;line-height:1.4;color:rgba(0,0,0,0.65); }
-    .cancelada { display:none;background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.3);padding:10px 16px;border-radius:8px;margin:8px 0; }
+    .cancelada { display:none;background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.3);padding:10px 16px;border-radius: 4px;margin:8px 0; }
     .titulo { font-weight:bold;color:#111 !important; }
     .motivo { color:rgba(0,0,0,0.65) !important; }
-    .chegamos { display:none;background:rgba(47,217,19,0.12);border:1px solid rgba(47,217,19,0.3);padding:10px 16px;border-radius:8px;margin:8px 0; }
+    .chegamos { display:none;background:rgba(47,217,19,0.12);border:1px solid rgba(47,217,19,0.3);padding:10px 16px;border-radius: 4px;margin:8px 0; }
     .chegamos p { font-weight:bold;color:#111 !important;line-height:17px; }
     .depois-de-iniciar { display:none; }
     .passageiro-info { padding:12px 0; }
-    .passageiro-info img { width:48px;border-radius:24px;border:2px solid rgba(255,255,255,0.25); }
+    .passageiro-info img { width:48px;border-radius: 4px;border:2px solid rgba(255,255,255,0.25); }
     .passageiro-info p { font-size:13px;line-height:15px;margin:0;color:rgba(0,0,0,0.70); }
     .locations { display:flex;align-items:center;padding:10px 0;margin-bottom:6px; }
     .locations div p { font-size:13px;margin:2px 0;color:rgba(0,0,0,0.70); }

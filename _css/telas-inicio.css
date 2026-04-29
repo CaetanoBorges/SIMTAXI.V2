@@ -1,7 +1,7 @@
-/* ── Shared Button ── */
+﻿/* ── Shared Button ── */
 .button-telas-inicio {
     cursor: pointer;
-    border-radius: var(--g-radius-xs, 8px);
+    border-radius: var(--g-radius-xs, 4px);
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.06em;
@@ -37,7 +37,7 @@
     backdrop-filter: var(--g-blur-sm, blur(10px));
     -webkit-backdrop-filter: var(--g-blur-sm, blur(10px));
     border: 1px solid var(--g-border, rgba(255,255,255,0.22));
-    border-radius: var(--g-radius-xs, 8px);
+    border-radius: var(--g-radius-xs, 4px);
     margin: 8px 0;
     color: #111;
     font-size: 14px;
@@ -56,6 +56,47 @@
 .input-telas-inicio option {
     background: #e0f2fe;
     color: #1e3a5f;
+}
+
+/* ── Tom Select overrides ── */
+.ts-wrapper.input-telas-inicio { padding: 0; }
+.ts-wrapper.input-telas-inicio .ts-control {
+    height: 44px;
+    min-height: 44px;
+    align-items: center;
+    border-radius: var(--g-radius-xs, 4px);
+    border: 1px solid rgba(0,0,0,0.10);
+    background: rgba(255,255,255,0.70);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: none;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #111;
+}
+.ts-wrapper.input-telas-inicio.focus .ts-control {
+    border-color: rgba(74,144,217,0.55);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+}
+.ts-wrapper.input-telas-inicio .ts-dropdown {
+    z-index: 99999;
+    border-radius: var(--g-radius-xs, 4px);
+    border: 1px solid rgba(0,0,0,0.10);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    font-size: 14px;
+}
+
+/* Tom Select injeta o dropdown no <body> — seletor global obrigatório */
+.ts-dropdown.single {
+    z-index: 99999 !important;
+}
+.ts-wrapper.input-telas-inicio .ts-dropdown .option {
+    padding: 10px 12px;
+    color: #111;
+}
+.ts-wrapper.input-telas-inicio .ts-dropdown .option.active {
+    background: rgba(74,144,217,0.12);
+    color: #1a4fa0;
 }
 
 /* ── Page Layout ── */
@@ -113,7 +154,7 @@
     background: rgba(255, 255, 255, 0.80) !important;
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.70) !important;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 

@@ -1,4 +1,4 @@
-export default function PrivacidadeTermos() {
+﻿export default function PrivacidadeTermos() {
   function html() {
     return `
 <div class="principal"><br><br>
@@ -58,7 +58,7 @@ export default function PrivacidadeTermos() {
         background:rgba(255,255,255,0.10);
         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
         border:1px solid rgba(255,255,255,0.18);border-bottom:none;
-        border-radius:8px 8px 0 0;
+        border-radius: 4px 4px 0 0;
         color:#111;cursor:pointer;padding:16px 18px;
         width:100%;text-align:left;outline:none;
         font-size:14px;margin-top:10px;text-transform:uppercase;font-weight:600;
@@ -69,7 +69,7 @@ export default function PrivacidadeTermos() {
         padding:0 18px;display:none;overflow:hidden;
         background:rgba(255,255,255,0.06);
         border:1px solid rgba(255,255,255,0.15);border-top:none;
-        border-radius:0 0 8px 8px;margin-bottom:4px;
+        border-radius: 0 0 4px 4px;margin-bottom:4px;
     }
     .content p, .content li { color:rgba(0,0,0,0.70);font-size:13px;line-height:1.6; }
     .content strong { color:#111; }

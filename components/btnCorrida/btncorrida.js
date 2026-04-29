@@ -1,4 +1,4 @@
-const debliwui_btncorrida = document.createElement('template');
+﻿const debliwui_btncorrida = document.createElement('template');
 debliwui_btncorrida.innerHTML = `
     <style>
         .container{
@@ -11,14 +11,22 @@ debliwui_btncorrida.innerHTML = `
         }
         .btn-corrida{
             width: 100%;
-            height: 31px;
-            background: #D97E13;
-            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            height: 44px;
+            background: linear-gradient(135deg,rgba(217,119,6,0.88),rgba(180,83,9,0.88));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 16px rgba(217,119,6,0.35), inset 0 1px 0 rgba(255,255,255,0.20);
+            border-radius: 6px;
             margin:15px 0;
-            border: 1px solid #D97E13;
+            border: 1px solid rgba(217,119,6,0.50);
             cursor:pointer;
+            color:#fff;
+            font-weight:700;
+            font-size:13px;
+            letter-spacing:0.06em;
+            transition: transform 0.18s ease;
         }
+        .btn-corrida:active { transform: scale(0.97); }
 
         
     </style>

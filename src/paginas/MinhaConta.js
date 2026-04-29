@@ -1,6 +1,16 @@
-﻿export default function MinhaConta() {
+﻿import BottomNav from '../../components/bottomNav/bottomNav.js';
+
+export default function MinhaConta() {
+  const _nav = BottomNav('perfil');
+
   function html() {
     return `
+<div class="mc-page">
+
+  <header class="nf-header">
+    <h1 class="nf-title">Perfil</h1>
+  </header>
+
 <div class="principal">
     <div class="principal-corpo">
         <div class="div-user-image">
@@ -40,41 +50,92 @@
         <select class="input-telas-inicio" id="municipio"></select>
         <debliwui-btnatualizardados></debliwui-btnatualizardados>
         <br><br>
-        <button id="openDeleteAccount">Eliminar a minha conta</button>
-        <delete-account-modal></delete-account-modal>
+        <button id="btn-definicoes" onclick="window.vaiTela('#/definicoes')">Definições</button>
         <br><br>
     </div>
 </div>
+</div>
+
+${_nav.html}
 <style>
-    #openDeleteAccount {
+  .mc-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 88px;
+    box-sizing: border-box;
+  }
+
+  .nf-header {
+    width: 100%;
+    background: #ffffff;
+    padding: 20px 20px 16px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nf-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+  }
+
+    #btn-definicoes {
         display: block;
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, rgba(231,76,60,0.75), rgba(169,50,38,0.75));
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(231,76,60,0.45);
-        border-radius: 8px;
-        color: #fff;
+        background: rgba(255,255,255,0.70);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.95);
+        border-radius: 6px;
+        color: #333;
         font-weight: 700;
-        font-size: 13px;
-        letter-spacing: 0.06em;
+        font-size: 14px;
+        letter-spacing: 0.04em;
         cursor: pointer;
-        margin-top: 16px;
-        box-shadow: 0 4px 16px rgba(231,76,60,0.3);
-        transition: transform 0.18s ease, background 0.18s ease;
+        margin-top: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.95);
+        transition: transform 0.18s ease;
+        text-align: left;
     }
-    #openDeleteAccount:hover { background: rgba(231,76,60,0.9); transform: translateY(-1px); }
+    #btn-definicoes::after { content: ' ›'; float: right; font-size: 18px; line-height: 1; }
+    #btn-definicoes:hover { transform: translateY(-1px); }
 </style>`;
   }
 
+  let _ts = [];
+
   function init() {
+    _nav.init();
     if (window._conta && window._conta.set) {
       window._conta.set();
     }
+    if (window.TomSelect) {
+      const tsGen  = new TomSelect('#genero',   { create: false, dropdownParent: 'body' });
+      const tsProv = new TomSelect('#provincia', { create: false, dropdownParent: 'body' });
+      const tsMun  = new TomSelect('#municipio', { create: false, dropdownParent: 'body' });
+      _ts = [tsGen, tsProv, tsMun];
+
+      // After Conta.set() listener updates #municipio innerHTML on province change, sync TomSelect
+      document.getElementById('provincia').addEventListener('change', function () {
+        tsMun.clearOptions();
+        tsMun.sync();
+        document.getElementById('municipio').disabled ? tsMun.disable() : tsMun.enable();
+      });
+    }
   }
 
-  function destroy() {}
+  function destroy() {
+    _ts.forEach(t => t.destroy());
+    _ts = [];
+  }
 
   return { html: html(), init, destroy };
 }

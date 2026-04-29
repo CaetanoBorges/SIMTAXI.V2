@@ -1,4 +1,7 @@
+﻿import BottomNav from '../../components/bottomNav/bottomNav.js';
+
 export default function Home() {
+  const _nav = BottomNav('inicio');
   let _autoPlay = null;
 
   /* ── dados dos slides ── */
@@ -62,6 +65,8 @@ export default function Home() {
   </div>
 
 </div>
+
+${_nav.html}
 <style>
   .home-page {
     width: 100%;
@@ -70,7 +75,7 @@ export default function Home() {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 12px 32px;
+    padding: 60px 12px 88px;
     box-sizing: border-box;
     gap: 18px;
   }
@@ -83,7 +88,7 @@ export default function Home() {
   }
   .sp-viewport {
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 4px;
     box-shadow: 0 6px 24px rgba(0,0,0,.20);
   }
   .sp-track {
@@ -180,7 +185,7 @@ export default function Home() {
   }
   .ss-card__thumb {
     width: 52px; height: 52px;
-    border-radius: 14px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,6 +228,7 @@ export default function Home() {
   }
 
   function init() {
+    _nav.init();
 
     /*
      * ── Helper: adiciona suporte a arrastar (mouse + touch) num track.

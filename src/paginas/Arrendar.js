@@ -1,4 +1,4 @@
-export default function Arrendar() {
+﻿export default function Arrendar() {
   function html() {
     return `
 <div class="principal">

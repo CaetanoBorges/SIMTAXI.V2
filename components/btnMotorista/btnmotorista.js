@@ -1,4 +1,4 @@
-const debliwui_btnmotorista = document.createElement('template');
+﻿const debliwui_btnmotorista = document.createElement('template');
 debliwui_btnmotorista.innerHTML = `
     <style>
         .container{
@@ -7,13 +7,20 @@ debliwui_btnmotorista.innerHTML = `
         }
         .btn{
             width: 114px;
-            height: 31px;
-            background: #d9d9d9;
-            border-radius: 5px;
+            height: 36px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 6px;
             margin:5px 0;
-            border: 1px solid #d9d9d9;
+            border: 1px solid rgba(255,255,255,0.90);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.95);
             cursor:pointer;
+            font-weight:700;
+            color:#333;
+            transition: transform 0.18s ease;
         }
+        .btn:active { transform: scale(0.97); }
 
         
     </style>

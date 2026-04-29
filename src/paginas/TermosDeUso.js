@@ -1,4 +1,4 @@
-export default function TermosDeUso() {
+﻿export default function TermosDeUso() {
   function html() {
     return `
 <div class="principal"><br><br>

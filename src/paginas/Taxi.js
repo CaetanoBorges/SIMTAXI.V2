@@ -1,4 +1,4 @@
-export default function Taxi() {
+﻿export default function Taxi() {
   function html() {
     return `
 <div class="home">
@@ -31,7 +31,7 @@ export default function Taxi() {
         backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
         border:1px solid rgba(231,76,60,0.5);
         box-shadow:0 4px 20px rgba(231,76,60,0.35);
-        border-radius:8px;font-weight:bold;font-size:13px;color:#fff;
+        border-radius: 4px;font-weight:bold;font-size:13px;color:#fff;
         cursor:pointer;position:fixed;bottom:5vh;left:25%;z-index:99999999;display:none;
     }
     .pendente {
@@ -41,7 +41,7 @@ export default function Taxi() {
         backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
         border:1px solid rgba(255,255,255,0.25);
         cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.3);
-        border-radius:8px;text-align:center;z-index:190000001;
+        border-radius: 4px;text-align:center;z-index:190000001;
     }
     .pendente p { margin:8px;padding:0;text-align:center;color:#111;font-size:13px; }
     .pendente-container { width:96%;padding:5% 2%;height:fit-content;display:block; }

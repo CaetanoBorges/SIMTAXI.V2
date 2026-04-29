@@ -1,4 +1,4 @@
-
+﻿
         // Definição do Web Component
         class DeleteAccountModal extends HTMLElement {
             constructor() {
@@ -9,6 +9,7 @@
 
             render() {
                 this.shadowRoot.innerHTML = `
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css">
                     <style>
                         :host {
                             --modal-z-index: 1000;
@@ -25,7 +26,9 @@
                             left: 0;
                             right: 0;
                             bottom: 0;
-                            background-color: var(--modal-bg-color);
+                            background-color: rgba(0,0,0,0.45);
+                            backdrop-filter: blur(6px);
+                            -webkit-backdrop-filter: blur(6px);
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -43,9 +46,12 @@
                         .delete-account-container {
                             max-width: 600px;
                             width: 90%;
-                            background-color: var(--container-bg-color);
-                            border-radius: 10px;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                            background: rgba(255,255,255,0.90);
+                            backdrop-filter: blur(24px);
+                            -webkit-backdrop-filter: blur(24px);
+                            border: 1px solid rgba(255,255,255,0.95);
+                            border-radius: 4px;
+                            box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.90);
                             padding: 30px;
                             max-height: 90vh;
                             overflow-y: auto;
@@ -94,11 +100,14 @@
                         select, textarea, input[type="password"] {
                             width: 100%;
                             padding: 10px;
-                            border: 1px solid #ddd;
+                            border: 1px solid rgba(0,0,0,0.12);
                             border-radius: 4px;
                             font-family: inherit;
                             font-size: 14px;
                             box-sizing: border-box;
+                            background: rgba(255,255,255,0.70);
+                            backdrop-filter: blur(8px);
+                            -webkit-backdrop-filter: blur(8px);
                         }
                         
                         textarea {
@@ -137,25 +146,37 @@
                         }
                         
                         .cancel-btn {
-                            background-color: #f0f0f0;
+                            background: rgba(255,255,255,0.75);
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
+                            border: 1px solid rgba(0,0,0,0.10);
+                            border-radius: 6px;
                             color: #333;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                         }
                         
                         .cancel-btn:hover {
-                            background-color: #e0e0e0;
+                            background: rgba(240,240,240,0.85);
                         }
                         
                         .delete-btn {
-                            background-color: var(--primary-color);
+                            background: linear-gradient(135deg,rgba(230,57,70,0.88),rgba(183,28,44,0.88));
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
+                            border: 1px solid rgba(230,57,70,0.50);
+                            border-radius: 6px;
                             color: white;
+                            box-shadow: 0 4px 14px rgba(230,57,70,0.30);
                         }
                         
                         .delete-btn:hover {
-                            background-color: #c0392b;
+                            background: linear-gradient(135deg,rgba(200,30,50,0.95),rgba(150,20,35,0.95));
                         }
                         
                         .delete-btn:disabled {
-                            background-color: #e0a7a1;
+                            background: rgba(230,57,70,0.35);
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
                             cursor: not-allowed;
                         }
                         
@@ -171,6 +192,51 @@
                             margin-top: 20px;
                         }
 
+                        .confirm-bar {
+                            display: none;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            background: rgba(255,255,255,0.95);
+                            border-top: 1px solid rgba(0,0,0,0.10);
+                            border-radius: 0 0 4px 4px;
+                            padding: 14px 20px;
+                            box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+                            z-index: 10;
+                            text-align: center;
+                        }
+                        .confirm-bar.active { display: block; }
+                        .confirm-bar p {
+                            margin: 0 0 12px;
+                            font-size: 13px;
+                            color: #333;
+                            font-weight: 500;
+                        }
+                        .confirm-bar .cb-actions {
+                            display: flex;
+                            gap: 10px;
+                            justify-content: center;
+                        }
+                        .confirm-bar .cb-cancel {
+                            padding: 8px 18px;
+                            background: rgba(255,255,255,0.75);
+                            border: 1px solid rgba(0,0,0,0.10);
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 13px;
+                        }
+                        .confirm-bar .cb-confirm {
+                            padding: 8px 18px;
+                            background: linear-gradient(135deg,rgba(230,57,70,0.88),rgba(183,28,44,0.88));
+                            border: 1px solid rgba(230,57,70,0.50);
+                            border-radius: 4px;
+                            color: #fff;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 13px;
+                        }
                         @media (max-width: 600px) {
                             .delete-account-container {
                                 width: 95%;
@@ -277,6 +343,13 @@
                                     <button id="confirmDeleteBtn" class="delete-btn" disabled>Eliminar minha conta permanentemente</button>
                                 </div>
                             </div>
+                            <div class="confirm-bar" id="confirmBar">
+                                <p>Tem certeza? Os dados preenchidos não serão guardados.</p>
+                                <div class="cb-actions">
+                                    <button class="cb-cancel" id="cbCancelBtn">Continuar a preencher</button>
+                                    <button class="cb-confirm" id="cbConfirmBtn">Sim, fechar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -295,11 +368,6 @@
                 const confirmDeleteBtn = this.shadowRoot.getElementById('confirmDeleteBtn');
                 const confirmDeleteCheckbox = this.shadowRoot.getElementById('confirmDelete');
                 const passwordField = this.shadowRoot.getElementById('password');
-
-                // Mostrar campo de texto quando "Outro motivo" é selecionado
-                reasonSelect.addEventListener('change', function() {
-                    otherReasonField.style.display = this.value === 'outro' ? 'block' : 'none';
-                });
 
                 // Ir para etapa de confirmação
                 continueBtn.addEventListener('click', () => {
@@ -357,6 +425,27 @@
                     this.close();
                 });
 
+                // Tom Select no select de motivo
+                if (window.TomSelect) {
+                    this._ts = new TomSelect(reasonSelect, {
+                        create: false,
+                        shadowRoot: this.shadowRoot,
+                    });
+                    // Sincronizar visibilidade do campo "Outro" com Tom Select
+                    this._ts.on('change', (val) => {
+                        otherReasonField.style.display = val === 'outro' ? 'block' : 'none';
+                    });
+                }
+
+                // Botões do confirm-bar
+                this.shadowRoot.getElementById('cbCancelBtn').addEventListener('click', () => {
+                    this.shadowRoot.getElementById('confirmBar').classList.remove('active');
+                });
+                this.shadowRoot.getElementById('cbConfirmBtn').addEventListener('click', () => {
+                    this.shadowRoot.getElementById('confirmBar').classList.remove('active');
+                    this.close();
+                });
+
                 // Fechar com ESC
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape' && this.modal.classList.contains('active')) {
@@ -388,9 +477,7 @@
 
             closeWithConfirmation() {
                 if (this.hasFormData()) {
-                    if (confirm('Tem certeza que deseja cancelar? Os seus dados não serão guardados.')) {
-                        this.close();
-                    }
+                    this.shadowRoot.getElementById('confirmBar').classList.add('active');
                 } else {
                     this.close();
                 }
@@ -408,21 +495,32 @@
             }
 
             open() {
-                this.modal.classList.add('active');
+                const modal = this.shadowRoot.querySelector('.modal-overlay');
+                if (!modal) return;
+                modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 this.resetForm();
             }
 
             close() {
-                this.modal.classList.remove('active');
+                const modal = this.shadowRoot.querySelector('.modal-overlay');
+                if (!modal) return;
+                modal.classList.remove('active');
                 document.body.style.overflow = '';
+            }
+
+            disconnectedCallback() {
+                if (this._ts) {
+                    this._ts.destroy();
+                    this._ts = null;
+                }
             }
 
             resetForm() {
                 this.shadowRoot.getElementById('feedbackStep').style.display = 'block';
                 this.shadowRoot.getElementById('continueBtn').style.display = 'inline-block';
                 this.shadowRoot.getElementById('confirmationStep').classList.remove('active');
-                this.shadowRoot.getElementById('reasonSelect').value = '';
+                if (this._ts) { this._ts.setValue(''); } else { this.shadowRoot.getElementById('reasonSelect').value = ''; }
                 this.shadowRoot.getElementById('otherReasonText').value = '';
                 this.shadowRoot.getElementById('otherReasonField').style.display = 'none';
                 this.shadowRoot.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -430,6 +528,7 @@
                 this.shadowRoot.getElementById('password').value = '';
                 this.shadowRoot.getElementById('confirmDelete').checked = false;
                 this.shadowRoot.getElementById('confirmDeleteBtn').disabled = true;
+                this.shadowRoot.getElementById('confirmBar').classList.remove('active');
             }
         }
 
