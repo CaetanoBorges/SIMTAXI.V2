@@ -70,6 +70,8 @@ const routes = {
     "#/confirmarrent":            () => import('./paginas/ConfirmarRent.js'),
     "#/rentacaminho":             () => import('./paginas/RentAcaminho.js'),
 
+    "#/wallet":                   () => import('./paginas/Wallet.js'),
+    "#/geribans":                 () => import('./paginas/GerirIbans.js'),
     "#/definicoes":               () => import('./paginas/Definicoes.js'),
     "#/corridaatual":             () => import('./paginas/CorridaAtual.js'),
 

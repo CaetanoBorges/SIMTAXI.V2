@@ -1,7 +1,11 @@
 ﻿import BottomNav from '../../components/bottomNav/bottomNav.js';
+import TopNav from '../../components/topNav/topNav.js';
+import SearchBar from '../../components/searchBar/searchBar.js';
 
 export default function Home() {
   const _nav = BottomNav('inicio');
+  const _topNav = TopNav();
+  const _search = SearchBar();
   let _autoPlay = null;
 
   /* ── dados dos slides ── */
@@ -14,13 +18,13 @@ export default function Home() {
   ];
 
   const SECUNDARIO = [
-    { bg: 'linear-gradient(135deg,#f5a623,#e05b00)', icon: '🚖', label: 'Taxi',        rota: '/taxi'        },
-    { bg: 'linear-gradient(135deg,#4a90d9,#1a4fa0)', icon: '🚗', label: 'Rent a Car',  rota: '/rentacar'    },
-    { bg: 'linear-gradient(135deg,#7ed321,#3a7a00)', icon: '🏠', label: 'Guesthouse',  rota: '/guesthouse'  },
-    { bg: 'linear-gradient(135deg,#9b59b6,#6c2fa0)', icon: '📋', label: 'Corridas',    rota: '/corridas'    },
-    { bg: 'linear-gradient(135deg,#1abc9c,#0e6655)', icon: '🗺️', label: 'Rotas',       rota: '/rotas'       },
-    { bg: 'linear-gradient(135deg,#e74c3c,#922b21)', icon: '👤', label: 'Minha Conta', rota: '/conta'       },
-    { bg: 'linear-gradient(135deg,#7f8c8d,#2c3e50)', icon: '⚙️', label: 'Definições',  rota: '/definicoes'  },
+    { img: 'https://placehold.co/80x60/f5a623/fff?text=Taxi',       nome: 'Taxi Executivo',    estrelas: 5, preco: 3500,  novo: true,  rota: '/taxi'       },
+    { img: 'https://placehold.co/80x60/4a90d9/fff?text=Rent',       nome: 'Rent a Car',        estrelas: 4, preco: 15000, novo: true,  rota: '/rentacar'   },
+    { img: 'https://placehold.co/80x60/7ed321/fff?text=Guest',      nome: 'Guesthouse Plus',   estrelas: 4, preco: 8000,  novo: false, rota: '/guesthouse' },
+    { img: 'https://placehold.co/80x60/9b59b6/fff?text=Corrida',    nome: 'Corrida Rápida',    estrelas: 3, preco: 2500,  novo: false, rota: '/corridas'   },
+    { img: 'https://placehold.co/80x60/1abc9c/fff?text=Rota',       nome: 'Rota Personalizada',estrelas: 5, preco: 1000,  novo: true,  rota: '/rotas'      },
+    { img: 'https://placehold.co/80x60/e74c3c/fff?text=Conta',      nome: 'Minha Conta',       estrelas: 4, preco: 0,     novo: false, rota: '/conta'      },
+    { img: 'https://placehold.co/80x60/2c3e50/fff?text=Config',     nome: 'Definições',        estrelas: 3, preco: 0,     novo: false, rota: '/definicoes' },
   ];
 
   /* ── HTML dos slides ── */
@@ -35,15 +39,28 @@ export default function Home() {
     `<span class="sp-dot${i === 0 ? ' sp-dot--ativo' : ''}" data-idx="${i}"></span>`
   ).join('');
 
+  function estrelas(n) {
+    return Array.from({ length: 5 }, (_, i) =>
+      `<span class="ss-star${i < n ? ' ss-star--on' : ''}">★</span>`
+    ).join('');
+  }
+
   const cardsS = SECUNDARIO.map(d => `
     <div class="ss-card" data-rota="${d.rota}">
-      <div class="ss-card__thumb" style="background:${d.bg};">${d.icon}</div>
-      <span class="ss-card__label">${d.label}</span>
+      ${d.novo ? '<span class="ss-card__badge">Novo</span>' : ''}
+      <img class="ss-card__img" src="${d.img}" alt="${d.nome}" loading="lazy">
+      <span class="ss-card__nome">${d.nome}</span>
+      <span class="ss-card__estrelas">${estrelas(d.estrelas)}</span>
+      <span class="ss-card__preco">${d.preco > 0 ? d.preco.toLocaleString('pt-AO') + ' Kz' : '—'}</span>
     </div>`).join('');
 
   function html() {
     return `
+${_topNav.html}
 <div class="home-page">
+
+  <!-- ── Barra de pesquisa ── -->
+  ${_search.html}
 
   <!-- ── Slide principal ── -->
   <div class="sp-wrap">
@@ -57,11 +74,9 @@ export default function Home() {
 
   <!-- ── Slide secundário ── -->
   <div class="ss-wrap">
-    <button class="ss-btn ss-btn--prev" id="ss-prev">&#8249;</button>
     <div class="ss-viewport">
       <div class="ss-track" id="ss-track">${cardsS}</div>
     </div>
-    <button class="ss-btn ss-btn--next" id="ss-next">&#8250;</button>
   </div>
 
 </div>
@@ -75,7 +90,7 @@ ${_nav.html}
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 12px 88px;
+    padding: 76px 12px 88px;
     box-sizing: border-box;
     gap: 18px;
   }
@@ -170,65 +185,84 @@ ${_nav.html}
   }
   .ss-track {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     transition: transform .35s ease;
     will-change: transform;
   }
   .ss-card {
-    min-width: calc((100% - 32px) / 5);
+    min-width: 120px;
+    max-width: 120px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.12);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow: hidden;
     cursor: pointer;
     user-select: none;
     flex-shrink: 0;
-  }
-  .ss-card__thumb {
-    width: 52px; height: 52px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.18);
-    margin-bottom: 5px;
-  }
-  .ss-card__label {
-    font-size: 9px;
-    font-weight: 600;
-    color: rgba(0,0,0,0.65);
-    text-shadow: none;
-    text-align: center;
-    line-height: 1.25;
-    max-width: 58px;
-  }
-
-  /* setas secundário */
-  .ss-btn {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 50%;
-    width: 30px; height: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    padding: 0;
-    color: #111;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: background 0.2s;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
   }
   @media (hover: hover) and (pointer: fine) {
-    .ss-btn:hover { background: rgba(255,255,255,0.28); }
+    .ss-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
   }
-  .ss-btn:disabled { opacity: .35; cursor: default; }
+  .ss-card__badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    z-index: 1;
+  }
+  .ss-card__img {
+    width: 100%;
+    height: 72px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+  .ss-card__nome {
+    font-size: 11px;
+    font-weight: 700;
+    color: #222;
+    padding: 6px 8px 2px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ss-card__estrelas {
+    padding: 0 8px 2px;
+    display: flex;
+    gap: 1px;
+  }
+  .ss-star {
+    font-size: 11px;
+    color: #ddd;
+    line-height: 1;
+  }
+  .ss-star--on { color: #f5a623; }
+  .ss-card__preco {
+    font-size: 11px;
+    font-weight: 700;
+    color: #c0392b;
+    padding: 2px 8px 8px;
+  }
+
+  /* setas secundário removidas */
 </style>`;
   }
 
   function init() {
     _nav.init();
+    _topNav.init();
+    _search.init();
 
     /*
      * ── Helper: adiciona suporte a arrastar (mouse + touch) num track.
@@ -363,9 +397,7 @@ ${_nav.html}
     /* ── Slide secundário ── */
     const ssTrack    = document.getElementById('ss-track');
     const ssViewport = ssTrack ? ssTrack.parentElement : null;
-    const ssPrev     = document.getElementById('ss-prev');
-    const ssNext     = document.getElementById('ss-next');
-    const VISIBLE    = 5;
+    const VISIBLE    = 3;
 
     if (ssTrack && ssTrack.children.length) {
       const ssOrig  = Array.from(ssTrack.children);
@@ -417,10 +449,6 @@ ${_nav.html}
       ssTrack.style.transition = 'none';
       ssTrack.style.transform  = `translateX(-${ssPos * ssCardWidth()}px)`;
 
-      ssPrev.disabled = false;
-      ssNext.disabled = false;
-      ssPrev.addEventListener('click', () => ssMove(ssPos - 1));
-      ssNext.addEventListener('click', () => ssMove(ssPos + 1));
       ssTrack.addEventListener('click', e => {
         const c = e.target.closest('.ss-card');
         if (c && c.dataset.rota) window.vaiTela(c.dataset.rota);

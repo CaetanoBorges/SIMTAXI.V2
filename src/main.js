@@ -39,7 +39,7 @@ import '../components/polyfill/custom-elements.min.js';
 
 // ---- Web Components ----
 import '../components/notificacao/notificacao.js';
-import '../components/menu/menu.js';
+// import '../components/menu/menu.js'; // desactivado
 import '../components/psqsa/pesquisa.js';
 import '../components/pesquisaRentacar/pesquisaRentacar.js';
 import '../components/corrida/corrida.js';
@@ -81,11 +81,9 @@ loader.abrir();
 const corrida = new debliwuicorrida($, loader, notificacao);
 window.corrida = corrida; // exposto para o router (_handleSubEstado)
 
-const menu = new debliwuimenu();
 const btncorrida = new debliwuibtncorrida();
-const btnmeusalugueres = new debliwuimeusalugueres();
+ const btnmeusalugueres = new debliwuimeusalugueres();
 
-root.prepend(menu);
 root.prepend(corrida);
 root.prepend(btncorrida);
 root.prepend(notificacao);
