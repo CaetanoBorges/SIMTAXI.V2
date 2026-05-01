@@ -6,7 +6,10 @@ export default function Home() {
   const _nav = BottomNav('inicio');
   const _topNav = TopNav();
   const _search = SearchBar();
-  let _autoPlay = null;
+  let _autoPlay    = null;
+  let _autoPlaySec = null;
+  let _autoPlayTer = null;
+  let _autoPlayQua = null;
 
   /* ── dados dos slides ── */
   const PRINCIPAL = [
@@ -18,13 +21,33 @@ export default function Home() {
   ];
 
   const SECUNDARIO = [
-    { img: 'https://placehold.co/80x60/f5a623/fff?text=Taxi',       nome: 'Taxi Executivo',    estrelas: 5, preco: 3500,  novo: true,  rota: '/taxi'       },
-    { img: 'https://placehold.co/80x60/4a90d9/fff?text=Rent',       nome: 'Rent a Car',        estrelas: 4, preco: 15000, novo: true,  rota: '/rentacar'   },
-    { img: 'https://placehold.co/80x60/7ed321/fff?text=Guest',      nome: 'Guesthouse Plus',   estrelas: 4, preco: 8000,  novo: false, rota: '/guesthouse' },
-    { img: 'https://placehold.co/80x60/9b59b6/fff?text=Corrida',    nome: 'Corrida Rápida',    estrelas: 3, preco: 2500,  novo: false, rota: '/corridas'   },
-    { img: 'https://placehold.co/80x60/1abc9c/fff?text=Rota',       nome: 'Rota Personalizada',estrelas: 5, preco: 1000,  novo: true,  rota: '/rotas'      },
-    { img: 'https://placehold.co/80x60/e74c3c/fff?text=Conta',      nome: 'Minha Conta',       estrelas: 4, preco: 0,     novo: false, rota: '/conta'      },
-    { img: 'https://placehold.co/80x60/2c3e50/fff?text=Config',     nome: 'Definições',        estrelas: 3, preco: 0,     novo: false, rota: '/definicoes' },
+    { id: 101, img: 'https://placehold.co/80x60/f5a623/fff?text=Taxi',       nome: 'Taxi Executivo',    estrelas: 5, preco: 3500,  novo: true,  rota: '/taxi'       },
+    { id: 102, img: 'https://placehold.co/80x60/4a90d9/fff?text=Rent',       nome: 'Rent a Car',        estrelas: 4, preco: 15000, novo: true,  rota: '/rentacar'   },
+    { id: 103, img: 'https://placehold.co/80x60/7ed321/fff?text=Guest',      nome: 'Guesthouse Plus',   estrelas: 4, preco: 8000,  novo: false, rota: '/guesthouse' },
+    { id: 104, img: 'https://placehold.co/80x60/9b59b6/fff?text=Corrida',    nome: 'Corrida Rápida',    estrelas: 3, preco: 2500,  novo: false, rota: '/corridas'   },
+    { id: 105, img: 'https://placehold.co/80x60/1abc9c/fff?text=Rota',       nome: 'Rota Personalizada',estrelas: 5, preco: 1000,  novo: true,  rota: '/rotas'      },
+    { id: 106, img: 'https://placehold.co/80x60/e74c3c/fff?text=Conta',      nome: 'Minha Conta',       estrelas: 4, preco: 0,     novo: false, rota: '/conta'      },
+    { id: 107, img: 'https://placehold.co/80x60/2c3e50/fff?text=Config',     nome: 'Definições',        estrelas: 3, preco: 0,     novo: false, rota: '/definicoes' },
+  ];
+
+  const TERCEIRO = [
+    { id: 201, img: 'https://placehold.co/80x60/e67e22/fff?text=Promo',      nome: 'Promo Taxi 20%',    estrelas: 5, preco: 2800,  novo: true,  rota: '/taxi'       },
+    { id: 202, img: 'https://placehold.co/80x60/2980b9/fff?text=Oferta',     nome: 'Oferta Rent',       estrelas: 4, preco: 12000, novo: true,  rota: '/rentacar'   },
+    { id: 203, img: 'https://placehold.co/80x60/27ae60/fff?text=Guest',      nome: 'Guest Económico',   estrelas: 3, preco: 5000,  novo: false, rota: '/guesthouse' },
+    { id: 204, img: 'https://placehold.co/80x60/8e44ad/fff?text=Frete',      nome: 'Frete Expresso',    estrelas: 4, preco: 1800,  novo: true,  rota: '/corridas'   },
+    { id: 205, img: 'https://placehold.co/80x60/16a085/fff?text=Pack',       nome: 'Pacote Família',    estrelas: 5, preco: 20000, novo: false, rota: '/rentacar'   },
+    { id: 206, img: 'https://placehold.co/80x60/c0392b/fff?text=VIP',        nome: 'Serviço VIP',       estrelas: 5, preco: 8500,  novo: true,  rota: '/taxi'       },
+    { id: 207, img: 'https://placehold.co/80x60/34495e/fff?text=Mensal',     nome: 'Plano Mensal',      estrelas: 4, preco: 30000, novo: false, rota: '/rentacar'   },
+  ];
+
+  const QUARTO = [
+    { id: 301, img: 'https://placehold.co/80x60/d35400/fff?text=Rec',         nome: 'Último Taxi',       estrelas: 4, preco: 3200,  novo: false, rota: '/corridas'   },
+    { id: 302, img: 'https://placehold.co/80x60/1f618d/fff?text=Rec',         nome: 'Último Rent',       estrelas: 3, preco: 14000, novo: false, rota: '/corridas'   },
+    { id: 303, img: 'https://placehold.co/80x60/1e8449/fff?text=Rec',         nome: 'Última Guest',      estrelas: 5, preco: 7500,  novo: false, rota: '/corridas'   },
+    { id: 304, img: 'https://placehold.co/80x60/6c3483/fff?text=Rec',         nome: 'Corrida Recente',   estrelas: 4, preco: 2100,  novo: false, rota: '/corridas'   },
+    { id: 305, img: 'https://placehold.co/80x60/117a65/fff?text=Rec',         nome: 'Rota Recente',      estrelas: 3, preco: 900,   novo: false, rota: '/rotas'      },
+    { id: 306, img: 'https://placehold.co/80x60/922b21/fff?text=Rec',         nome: 'Vista Conta',       estrelas: 4, preco: 0,     novo: false, rota: '/conta'      },
+    { id: 307, img: 'https://placehold.co/80x60/1a252f/fff?text=Rec',         nome: 'Config Recente',    estrelas: 3, preco: 0,     novo: false, rota: '/definicoes' },
   ];
 
   /* ── HTML dos slides ── */
@@ -45,14 +68,20 @@ export default function Home() {
     ).join('');
   }
 
-  const cardsS = SECUNDARIO.map(d => `
-    <div class="ss-card" data-rota="${d.rota}">
+  function buildCards(list) {
+    return list.map(d => `
+    <div class="ss-card" data-id="${d.id}" data-item='${JSON.stringify(d).replace(/'/g, '&#39;')}'>
       ${d.novo ? '<span class="ss-card__badge">Novo</span>' : ''}
       <img class="ss-card__img" src="${d.img}" alt="${d.nome}" loading="lazy">
       <span class="ss-card__nome">${d.nome}</span>
       <span class="ss-card__estrelas">${estrelas(d.estrelas)}</span>
       <span class="ss-card__preco">${d.preco > 0 ? d.preco.toLocaleString('pt-AO') + ' Kz' : '—'}</span>
     </div>`).join('');
+  }
+
+  const cardsS = buildCards(SECUNDARIO);
+  const cardsT = buildCards(TERCEIRO);
+  const cardsQ = buildCards(QUARTO);
 
   function html() {
     return `
@@ -72,10 +101,24 @@ ${_topNav.html}
     <div class="sp-dots" id="sp-dots">${dotsP}</div>
   </div>
 
-  <!-- ── Slide secundário ── -->
+  <!-- ── Slide secundário 1 ── -->
   <div class="ss-wrap">
     <div class="ss-viewport">
       <div class="ss-track" id="ss-track">${cardsS}</div>
+    </div>
+  </div>
+
+  <!-- ── Slide secundário 2 ── -->
+  <div class="ss-wrap">
+    <div class="ss-viewport">
+      <div class="ss-track" id="ss-track2">${cardsT}</div>
+    </div>
+  </div>
+
+  <!-- ── Slide secundário 3 ── -->
+  <div class="ss-wrap">
+    <div class="ss-viewport">
+      <div class="ss-track" id="ss-track3">${cardsQ}</div>
     </div>
   </div>
 
@@ -222,7 +265,7 @@ ${_nav.html}
   }
   .ss-card__img {
     width: 100%;
-    height: 72px;
+    height: 120px;
     object-fit: cover;
     display: block;
     flex-shrink: 0;
@@ -394,80 +437,74 @@ ${_nav.html}
       _autoPlay = setInterval(() => move(pos + 1), 3500);
     }
 
-    /* ── Slide secundário ── */
-    const ssTrack    = document.getElementById('ss-track');
-    const ssViewport = ssTrack ? ssTrack.parentElement : null;
-    const VISIBLE    = 3;
+    /* ── Helper: inicializa slide secundário ── */
+    function initSmallSlide(trackId, intervalMs) {
+      const t  = document.getElementById(trackId);
+      const vp = t ? t.parentElement : null;
+      if (!t || !t.children.length) return null;
+      const VIS   = 3;
+      const orig  = Array.from(t.children);
+      const total = orig.length;
 
-    if (ssTrack && ssTrack.children.length) {
-      const ssOrig  = Array.from(ssTrack.children);
-      const ssTotal = ssOrig.length;
+      for (let i = 0; i < VIS; i++) t.appendChild(orig[i].cloneNode(true));
+      for (let i = VIS - 1; i >= 0; i--) t.insertBefore(orig[total - 1 - i].cloneNode(true), t.firstChild);
 
-      for (let i = 0; i < VISIBLE; i++) {
-        ssTrack.appendChild(ssOrig[i].cloneNode(true));
+      let busy = false;
+      let pos  = VIS;
+
+      function cw() {
+        return t.children[0] ? t.children[0].getBoundingClientRect().width + 8 : 0;
       }
-      for (let i = VISIBLE - 1; i >= 0; i--) {
-        ssTrack.insertBefore(ssOrig[ssTotal - 1 - i].cloneNode(true), ssTrack.firstChild);
-      }
-
-      let ssBusy = false;
-      let ssPos  = VISIBLE;
-
-      function ssCardWidth() {
-        const allCards = Array.from(ssTrack.children);
-        return allCards.length ? allCards[0].getBoundingClientRect().width + 8 : 0;
-      }
-
-      function ssBaseX() {
-        return -(ssPos * ssCardWidth());
-      }
-
-      function ssMove(newPos) {
-        if (ssBusy) return;
-        ssBusy = true;
-        const cw = ssCardWidth();
-        ssTrack.style.transition = 'transform .35s ease';
-        ssTrack.style.transform  = `translateX(-${newPos * cw}px)`;
-        ssPos = newPos;
+      function baseX() { return -(pos * cw()); }
+      function go(newPos) {
+        if (busy) return;
+        busy = true;
+        const w = cw();
+        t.style.transition = 'transform .35s ease';
+        t.style.transform  = `translateX(-${newPos * w}px)`;
+        pos = newPos;
       }
 
-      ssTrack.addEventListener('transitionend', () => {
-        ssBusy = false;
-        const cw      = ssCardWidth();
-        const maxReal = ssTotal + VISIBLE - 1;
-        if (ssPos < VISIBLE) {
-          ssTrack.style.transition = 'none';
-          ssPos = ssPos + ssTotal;
-          ssTrack.style.transform  = `translateX(-${ssPos * cw}px)`;
-        } else if (ssPos > maxReal) {
-          ssTrack.style.transition = 'none';
-          ssPos = ssPos - ssTotal;
-          ssTrack.style.transform  = `translateX(-${ssPos * cw}px)`;
+      t.addEventListener('transitionend', () => {
+        busy = false;
+        const w = cw(); const maxReal = total + VIS - 1;
+        if (pos < VIS) {
+          t.style.transition = 'none'; pos += total;
+          t.style.transform  = `translateX(-${pos * w}px)`;
+        } else if (pos > maxReal) {
+          t.style.transition = 'none'; pos -= total;
+          t.style.transform  = `translateX(-${pos * w}px)`;
         }
       });
 
-      ssTrack.style.transition = 'none';
-      ssTrack.style.transform  = `translateX(-${ssPos * ssCardWidth()}px)`;
+      t.style.transition = 'none';
+      t.style.transform  = `translateX(-${pos * cw()}px)`;
 
-      ssTrack.addEventListener('click', e => {
+      t.addEventListener('click', e => {
         const c = e.target.closest('.ss-card');
-        if (c && c.dataset.rota) window.vaiTela(c.dataset.rota);
+        if (c && c.dataset.id) {
+          try { sessionStorage.setItem('ver_item', c.dataset.item); } catch (_) {}
+          window.vaiTela('#/ver-item?id=' + c.dataset.id);
+        }
       });
 
-      makeDraggable(
-        ssViewport, ssTrack,
-        ssBaseX,
-        px => { ssTrack.style.transform = `translateX(${px}px)`; },
-        () => ssMove(ssPos + 1),
-        () => ssMove(ssPos - 1),
-        40,   // threshold menor para o slide pequeno
-      );
+      makeDraggable(vp, t, baseX,
+        px => { t.style.transform = `translateX(${px}px)`; },
+        () => go(pos + 1), () => go(pos - 1), 40);
+
+      return setInterval(() => go(pos + 1), intervalMs);
     }
+
+    _autoPlaySec = initSmallSlide('ss-track',  2800);
+    _autoPlayTer = initSmallSlide('ss-track2', 3100);
+    _autoPlayQua = initSmallSlide('ss-track3', 3400);
   }
 
   function destroy() {
-    clearInterval(_autoPlay);
-    _autoPlay = null;
+    clearInterval(_autoPlay);    _autoPlay    = null;
+    clearInterval(_autoPlaySec); _autoPlaySec = null;
+    clearInterval(_autoPlayTer); _autoPlayTer = null;
+    clearInterval(_autoPlayQua); _autoPlayQua = null;
   }
 
   return { html: html(), init, destroy };

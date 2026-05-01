@@ -12,7 +12,10 @@ export default function MinhaConta() {
   </header>
 
 <div class="principal">
-    <div class="principal-corpo">
+    <div class="principal-corpo" style="margin-top:20px;">
+        <button id="btn-produtos" onclick="window.vaiTela('#/meus-produtos')">Meus Produtos e Serviços</button>
+        <button id="btn-definicoes" onclick="window.vaiTela('#/definicoes')">Definições</button>
+        <br><br>
         <div class="div-user-image">
             <label for="imagem">
                 <img src="/pen-solid.svg">
@@ -50,8 +53,6 @@ export default function MinhaConta() {
         <select class="input-telas-inicio" id="municipio"></select>
         <debliwui-btnatualizardados></debliwui-btnatualizardados>
         <br><br>
-        <button id="btn-definicoes" onclick="window.vaiTela('#/definicoes')">Definições</button>
-        <br><br>
     </div>
 </div>
 </div>
@@ -86,7 +87,7 @@ ${_nav.html}
     color: #111;
   }
 
-    #btn-definicoes {
+    #btn-definicoes, #btn-produtos {
         display: block;
         width: 100%;
         padding: 14px;
@@ -105,8 +106,8 @@ ${_nav.html}
         transition: transform 0.18s ease;
         text-align: left;
     }
-    #btn-definicoes::after { content: ' ›'; float: right; font-size: 18px; line-height: 1; }
-    #btn-definicoes:hover { transform: translateY(-1px); }
+    #btn-definicoes::after, #btn-produtos::after { content: ' ›'; float: right; font-size: 18px; line-height: 1; }
+    #btn-definicoes:hover, #btn-produtos:hover { transform: translateY(-1px); }
 </style>`;
   }
 

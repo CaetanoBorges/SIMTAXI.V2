@@ -73,6 +73,10 @@ const routes = {
     "#/wallet":                   () => import('./paginas/Wallet.js'),
     "#/geribans":                 () => import('./paginas/GerirIbans.js'),
     "#/definicoes":               () => import('./paginas/Definicoes.js'),
+    "#/meus-produtos":            () => import('./paginas/MeusProdutos.js'),
+    "#/adicionar-produto":        () => import('./paginas/AdicionarProduto.js'),
+    "#/editar-produto":           () => import('./paginas/EditorProduto.js'),
+    "#/ver-item":                 () => import('./paginas/VerItem.js'),
     "#/corridaatual":             () => import('./paginas/CorridaAtual.js'),
 
     "#/guesthouse":               () => import('./paginas/Guesthouse.js'),
@@ -151,12 +155,13 @@ const handleLocation = async () => {
     document.querySelector("#main").innerHTML = "";
     try { window.loader.abrir(); } catch (e) {}
 
-    const loadPage = routes[hash] || routes[404];
+    const routeKey = hash.split('?')[0];
+    const loadPage = routes[routeKey] || routes[404];
 
     try {
-        const mod = _moduleCache.get(hash) ?? await (async () => {
+        const mod = _moduleCache.get(routeKey) ?? await (async () => {
             const m = await loadPage();
-            _moduleCache.set(hash, m);
+            _moduleCache.set(routeKey, m);
             return m;
         })();
         const resultado = mod.default(hash);
